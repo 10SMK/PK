@@ -6,35 +6,97 @@
     <title>Media Pembelajaran Matematika 10 SMK</title>
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Arial, sans-serif;
             margin: 0;
-            min-height: 100vh;
+            background: #f5f7fa;
             display: flex;
             flex-direction: column;
+            min-height: 100vh;
         }
         header, footer {
-            background-color: #1976d2;
+            background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
             color: #fff;
-            padding: 16px;
             text-align: center;
+            padding: 24px 10px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.07);
         }
         main {
             flex: 1;
-            padding: 24px;
-            text-align: center;
+            max-width: 700px;
+            margin: 36px auto 24px auto;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 24px rgba(25, 118, 210, 0.08);
+            padding: 32px 20px;
         }
-        .links {
-            margin-top: 24px;
-        }
-        .links a {
-            display: inline-block;
-            margin: 0 12px;
+        h2 {
             color: #1976d2;
-            text-decoration: none;
+            margin-bottom: 8px;
+        }
+        .desc {
+            font-size: 1.08em;
+            color: #333;
+            margin-bottom: 28px;
+        }
+        .soal {
+            margin-bottom: 32px;
+            background: #f0f6ff;
+            border-radius: 8px;
+            padding: 18px 16px 14px 16px;
+            box-shadow: 0 1px 4px rgba(25, 118, 210, 0.06);
+        }
+        .soal p {
+            margin: 0 0 12px 0;
+            font-weight: 500;
+        }
+        .opsi label {
+            display: block;
+            margin-bottom: 7px;
+            cursor: pointer;
+        }
+        .opsi input[type="radio"] {
+            margin-right: 8px;
+        }
+        .btn-cek {
+            margin-top: 10px;
+            padding: 7px 22px;
+            background: #1976d2;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            font-size: 1em;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn-cek:hover {
+            background: #1565c0;
+        }
+        .pembahasan {
+            margin-top: 14px;
+            padding: 10px 14px;
+            background: #e3f2fd;
+            border-left: 4px solid #1976d2;
+            border-radius: 6px;
+            display: none;
+            font-size: 0.98em;
+        }
+        .benar {
+            color: #2e7d32;
             font-weight: bold;
         }
-        .links a:hover {
-            text-decoration: underline;
+        .salah {
+            color: #c62828;
+            font-weight: bold;
+        }
+        footer {
+            font-size: 1em;
+            letter-spacing: 1px;
+            margin-top: auto;
+        }
+        @media (max-width: 600px) {
+            main {
+                padding: 16px 4vw;
+            }
         }
     </style>
 </head>
@@ -44,16 +106,418 @@
     </header>
     <main>
         <h2>Persamaan Kuadrat</h2>
-        <div class="links">
-            <!-- Tambahkan link HTML lain di bawah ini -->
-            <a href="materi1.html">Materi 1</a>
-            <a href="latihan.html">Latihan Soal</a>
-            <a href="video.html">Video Pembelajaran</a>
-            <!-- Anda dapat menambah link lainnya sesuai kebutuhan -->
+        <div class="desc">
+            <b>Persamaan kuadrat</b> adalah persamaan yang berbentuk <b>ax² + bx + c = 0</b> dengan <b>a ≠ 0</b>, di mana <b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta. Persamaan ini disebut "kuadrat" karena variabelnya berpangkat dua. Persamaan kuadrat banyak digunakan dalam berbagai bidang, seperti fisika, ekonomi, dan teknik.
+        </div>
+        <!-- Soal 1 -->
+        <div class="soal" id="soal1">
+            <p>1. Bentuk umum persamaan kuadrat adalah ...</p>
+            <div class="opsi">
+                <label><input type="radio" name="s1" value="a"> ax + b = 0</label>
+                <label><input type="radio" name="s1" value="b"> ax² + bx + c = 0</label>
+                <label><input type="radio" name="s1" value="c"> ax³ + bx² + c = 0</label>
+                <label><input type="radio" name="s1" value="d"> ax² + b = 0</label>
+            </div>
+            <button class="btn-cek" onclick="cekJawaban(1, 'b')">Cek Jawaban</button>
+            <div class="pembahasan" id="pembahasan1"></div>
+        </div>
+        <!-- Soal 2 -->
+        <div class="soal" id="soal2">
+            <p>2. Jika x² - 5x + 6 = 0, maka nilai x yang memenuhi adalah ...</p>
+            <div class="opsi">
+                <label><input type="radio" name="s2" value="a"> 2 dan 3</label>
+                <label><input type="radio" name="s2" value="b"> -2 dan -3</label>
+                <label><input type="radio" name="s2" value="c"> 1 dan 6</label>
+                <label><input type="radio" name="s2" value="d"> 5 dan 6</label>
+            </div>
+            <button class="btn-cek" onclick="cekJawaban(2, 'a')">Cek Jawaban</button>
+            <div class="pembahasan" id="pembahasan2"></div>
+        </div>
+        <!-- Soal 3 -->
+        <div class="soal" id="soal3">
+            <p>3. Nilai diskriminan dari persamaan kuadrat x² + 4x + 3 = 0 adalah ...</p>
+            <div class="opsi">
+                <label><input type="radio" name="s3" value="a"> 16</label>
+                <label><input type="radio" name="s3" value="b"> 10</label>
+                <label><input type="radio" name="s3" value="c"> 4</label>
+                <label><input type="radio" name="s3" value="d"> 4</label>
+                <label><input type="radio" name="s3" value="e"> 4</label>
+                <label><input type="radio" name="s3" value="f"> 4</label>
+                <label><input type="radio" name="s3" value="g"> 4</label>
+                <label><input type="radio" name="s3" value="h"> 4</label>
+                <label><input type="radio" name="s3" value="i"> 4</label>
+                <label><input type="radio" name="s3" value="j"> 4</label>
+                <label><input type="radio" name="s3" value="k"> 4</label>
+                <label><input type="radio" name="s3" value="l"> 4</label>
+                <label><input type="radio" name="s3" value="m"> 4</label>
+                <label><input type="radio" name="s3" value="n"> 4</label>
+                <label><input type="radio" name="s3" value="o"> 4</label>
+                <label><input type="radio" name="s3" value="p"> 4</label>
+                <label><input type="radio" name="s3" value="q"> 4</label>
+                <label><input type="radio" name="s3" value="r"> 4</label>
+                <label><input type="radio" name="s3" value="s"> 4</label>
+                <label><input type="radio" name="s3" value="t"> 4</label>
+                <label><input type="radio" name="s3" value="u"> 4</label>
+                <label><input type="radio" name="s3" value="v"> 4</label>
+                <label><input type="radio" name="s3" value="w"> 4</label>
+                <label><input type="radio" name="s3" value="x"> 4</label>
+                <label><input type="radio" name="s3" value="y"> 4</label>
+                <label><input type="radio" name="s3" value="z"> 4</label>
+                <label><input type="radio" name="s3" value="aa"> 4</label>
+                <label><input type="radio" name="s3" value="bb"> 4</label>
+                <label><input type="radio" name="s3" value="cc"> 4</label>
+                <label><input type="radio" name="s3" value="dd"> 4</label>
+                <label><input type="radio" name="s3" value="ee"> 4</label>
+                <label><input type="radio" name="s3" value="ff"> 4</label>
+                <label><input type="radio" name="s3" value="gg"> 4</label>
+                <label><input type="radio" name="s3" value="hh"> 4</label>
+                <label><input type="radio" name="s3" value="ii"> 4</label>
+                <label><input type="radio" name="s3" value="jj"> 4</label>
+                <label><input type="radio" name="s3" value="kk"> 4</label>
+                <label><input type="radio" name="s3" value="ll"> 4</label>
+                <label><input type="radio" name="s3" value="mm"> 4</label>
+                <label><input type="radio" name="s3" value="nn"> 4</label>
+                <label><input type="radio" name="s3" value="oo"> 4</label>
+                <label><input type="radio" name="s3" value="pp"> 4</label>
+                <label><input type="radio" name="s3" value="qq"> 4</label>
+                <label><input type="radio" name="s3" value="rr"> 4</label>
+                <label><input type="radio" name="s3" value="ss"> 4</label>
+                <label><input type="radio" name="s3" value="tt"> 4</label>
+                <label><input type="radio" name="s3" value="uu"> 4</label>
+                <label><input type="radio" name="s3" value="vv"> 4</label>
+                <label><input type="radio" name="s3" value="ww"> 4</label>
+                <label><input type="radio" name="s3" value="xx"> 4</label>
+                <label><input type="radio" name="s3" value="yy"> 4</label>
+                <label><input type="radio" name="s3" value="zz"> 4</label>
+                <label><input type="radio" name="s3" value="ab"> 4</label>
+                <label><input type="radio" name="s3" value="ac"> 4</label>
+                <label><input type="radio" name="s3" value="ad"> 4</label>
+                <label><input type="radio" name="s3" value="ae"> 4</label>
+                <label><input type="radio" name="s3" value="af"> 4</label>
+                <label><input type="radio" name="s3" value="ag"> 4</label>
+                <label><input type="radio" name="s3" value="ah"> 4</label>
+                <label><input type="radio" name="s3" value="ai"> 4</label>
+                <label><input type="radio" name="s3" value="aj"> 4</label>
+                <label><input type="radio" name="s3" value="ak"> 4</label>
+                <label><input type="radio" name="s3" value="al"> 4</label>
+                <label><input type="radio" name="s3" value="am"> 4</label>
+                <label><input type="radio" name="s3" value="an"> 4</label>
+                <label><input type="radio" name="s3" value="ao"> 4</label>
+                <label><input type="radio" name="s3" value="ap"> 4</label>
+                <label><input type="radio" name="s3" value="aq"> 4</label>
+                <label><input type="radio" name="s3" value="ar"> 4</label>
+                <label><input type="radio" name="s3" value="as"> 4</label>
+                <label><input type="radio" name="s3" value="at"> 4</label>
+                <label><input type="radio" name="s3" value="au"> 4</label>
+                <label><input type="radio" name="s3" value="av"> 4</label>
+                <label><input type="radio" name="s3" value="aw"> 4</label>
+                <label><input type="radio" name="s3" value="ax"> 4</label>
+                <label><input type="radio" name="s3" value="ay"> 4</label>
+                <label><input type="radio" name="s3" value="az"> 4</label>
+                <label><input type="radio" name="s3" value="ba"> 4</label>
+                <label><input type="radio" name="s3" value="bb"> 4</label>
+                <label><input type="radio" name="s3" value="bc"> 4</label>
+                <label><input type="radio" name="s3" value="bd"> 4</label>
+                <label><input type="radio" name="s3" value="be"> 4</label>
+                <label><input type="radio" name="s3" value="bf"> 4</label>
+                <label><input type="radio" name="s3" value="bg"> 4</label>
+                <label><input type="radio" name="s3" value="bh"> 4</label>
+                <label><input type="radio" name="s3" value="bi"> 4</label>
+                <label><input type="radio" name="s3" value="bj"> 4</label>
+                <label><input type="radio" name="s3" value="bk"> 4</label>
+                <label><input type="radio" name="s3" value="bl"> 4</label>
+                <label><input type="radio" name="s3" value="bm"> 4</label>
+                <label><input type="radio" name="s3" value="bn"> 4</label>
+                <label><input type="radio" name="s3" value="bo"> 4</label>
+                <label><input type="radio" name="s3" value="bp"> 4</label>
+                <label><input type="radio" name="s3" value="bq"> 4</label>
+                <label><input type="radio" name="s3" value="br"> 4</label>
+                <label><input type="radio" name="s3" value="bs"> 4</label>
+                <label><input type="radio" name="s3" value="bt"> 4</label>
+                <label><input type="radio" name="s3" value="bu"> 4</label>
+                <label><input type="radio" name="s3" value="bv"> 4</label>
+                <label><input type="radio" name="s3" value="bw"> 4</label>
+                <label><input type="radio" name="s3" value="bx"> 4</label>
+                <label><input type="radio" name="s3" value="by"> 4</label>
+                <label><input type="radio" name="s3" value="bz"> 4</label>
+                <label><input type="radio" name="s3" value="ca"> 4</label>
+                <label><input type="radio" name="s3" value="cb"> 4</label>
+                <label><input type="radio" name="s3" value="cc"> 4</label>
+                <label><input type="radio" name="s3" value="cd"> 4</label>
+                <label><input type="radio" name="s3" value="ce"> 4</label>
+                <label><input type="radio" name="s3" value="cf"> 4</label>
+                <label><input type="radio" name="s3" value="cg"> 4</label>
+                <label><input type="radio" name="s3" value="ch"> 4</label>
+                <label><input type="radio" name="s3" value="ci"> 4</label>
+                <label><input type="radio" name="s3" value="cj"> 4</label>
+                <label><input type="radio" name="s3" value="ck"> 4</label>
+                <label><input type="radio" name="s3" value="cl"> 4</label>
+                <label><input type="radio" name="s3" value="cm"> 4</label>
+                <label><input type="radio" name="s3" value="cn"> 4</label>
+                <label><input type="radio" name="s3" value="co"> 4</label>
+                <label><input type="radio" name="s3" value="cp"> 4</label>
+                <label><input type="radio" name="s3" value="cq"> 4</label>
+                <label><input type="radio" name="s3" value="cr"> 4</label>
+                <label><input type="radio" name="s3" value="cs"> 4</label>
+                <label><input type="radio" name="s3" value="ct"> 4</label>
+                <label><input type="radio" name="s3" value="cu"> 4</label>
+                <label><input type="radio" name="s3" value="cv"> 4</label>
+                <label><input type="radio" name="s3" value="cw"> 4</label>
+                <label><input type="radio" name="s3" value="cx"> 4</label>
+                <label><input type="radio" name="s3" value="cy"> 4</label>
+                <label><input type="radio" name="s3" value="cz"> 4</label>
+                <label><input type="radio" name="s3" value="da"> 4</label>
+                <label><input type="radio" name="s3" value="db"> 4</label>
+                <label><input type="radio" name="s3" value="dc"> 4</label>
+                <label><input type="radio" name="s3" value="dd"> 4</label>
+                <label><input type="radio" name="s3" value="de"> 4</label>
+                <label><input type="radio" name="s3" value="df"> 4</label>
+                <label><input type="radio" name="s3" value="dg"> 4</label>
+                <label><input type="radio" name="s3" value="dh"> 4</label>
+                <label><input type="radio" name="s3" value="di"> 4</label>
+                <label><input type="radio" name="s3" value="dj"> 4</label>
+                <label><input type="radio" name="s3" value="dk"> 4</label>
+                <label><input type="radio" name="s3" value="dl"> 4</label>
+                <label><input type="radio" name="s3" value="dm"> 4</label>
+                <label><input type="radio" name="s3" value="dn"> 4</label>
+                <label><input type="radio" name="s3" value="do"> 4</label>
+                <label><input type="radio" name="s3" value="dp"> 4</label>
+                <label><input type="radio" name="s3" value="dq"> 4</label>
+                <label><input type="radio" name="s3" value="dr"> 4</label>
+                <label><input type="radio" name="s3" value="ds"> 4</label>
+                <label><input type="radio" name="s3" value="dt"> 4</label>
+                <label><input type="radio" name="s3" value="du"> 4</label>
+                <label><input type="radio" name="s3" value="dv"> 4</label>
+                <label><input type="radio" name="s3" value="dw"> 4</label>
+                <label><input type="radio" name="s3" value="dx"> 4</label>
+                <label><input type="radio" name="s3" value="dy"> 4</label>
+                <label><input type="radio" name="s3" value="dz"> 4</label>
+                <label><input type="radio" name="s3" value="ea"> 4</label>
+                <label><input type="radio" name="s3" value="eb"> 4</label>
+                <label><input type="radio" name="s3" value="ec"> 4</label>
+                <label><input type="radio" name="s3" value="ed"> 4</label>
+                <label><input type="radio" name="s3" value="ee"> 4</label>
+                <label><input type="radio" name="s3" value="ef"> 4</label>
+                <label><input type="radio" name="s3" value="eg"> 4</label>
+                <label><input type="radio" name="s3" value="eh"> 4</label>
+                <label><input type="radio" name="s3" value="ei"> 4</label>
+                <label><input type="radio" name="s3" value="ej"> 4</label>
+                <label><input type="radio" name="s3" value="ek"> 4</label>
+                <label><input type="radio" name="s3" value="el"> 4</label>
+                <label><input type="radio" name="s3" value="em"> 4</label>
+                <label><input type="radio" name="s3" value="en"> 4</label>
+                <label><input type="radio" name="s3" value="eo"> 4</label>
+                <label><input type="radio" name="s3" value="ep"> 4</label>
+                <label><input type="radio" name="s3" value="eq"> 4</label>
+                <label><input type="radio" name="s3" value="er"> 4</label>
+                <label><input type="radio" name="s3" value="es"> 4</label>
+                <label><input type="radio" name="s3" value="et"> 4</label>
+                <label><input type="radio" name="s3" value="eu"> 4</label>
+                <label><input type="radio" name="s3" value="ev"> 4</label>
+                <label><input type="radio" name="s3" value="ew"> 4</label>
+                <label><input type="radio" name="s3" value="ex"> 4</label>
+                <label><input type="radio" name="s3" value="ey"> 4</label>
+                <label><input type="radio" name="s3" value="ez"> 4</label>
+                <label><input type="radio" name="s3" value="fa"> 4</label>
+                <label><input type="radio" name="s3" value="fb"> 4</label>
+                <label><input type="radio" name="s3" value="fc"> 4</label>
+                <label><input type="radio" name="s3" value="fd"> 4</label>
+                <label><input type="radio" name="s3" value="fe"> 4</label>
+                <label><input type="radio" name="s3" value="ff"> 4</label>
+                <label><input type="radio" name="s3" value="fg"> 4</label>
+                <label><input type="radio" name="s3" value="fh"> 4</label>
+                <label><input type="radio" name="s3" value="fi"> 4</label>
+                <label><input type="radio" name="s3" value="fj"> 4</label>
+                <label><input type="radio" name="s3" value="fk"> 4</label>
+                <label><input type="radio" name="s3" value="fl"> 4</label>
+                <label><input type="radio" name="s3" value="fm"> 4</label>
+                <label><input type="radio" name="s3" value="fn"> 4</label>
+                <label><input type="radio" name="s3" value="fo"> 4</label>
+                <label><input type="radio" name="s3" value="fp"> 4</label>
+                <label><input type="radio" name="s3" value="fq"> 4</label>
+                <label><input type="radio" name="s3" value="fr"> 4</label>
+                <label><input type="radio" name="s3" value="fs"> 4</label>
+                <label><input type="radio" name="s3" value="ft"> 4</label>
+                <label><input type="radio" name="s3" value="fu"> 4</label>
+                <label><input type="radio" name="s3" value="fv"> 4</label>
+                <label><input type="radio" name="s3" value="fw"> 4</label>
+                <label><input type="radio" name="s3" value="fx"> 4</label>
+                <label><input type="radio" name="s3" value="fy"> 4</label>
+                <label><input type="radio" name="s3" value="fz"> 4</label>
+                <label><input type="radio" name="s3" value="ga"> 4</label>
+                <label><input type="radio" name="s3" value="gb"> 4</label>
+                <label><input type="radio" name="s3" value="gc"> 4</label>
+                <label><input type="radio" name="s3" value="gd"> 4</label>
+                <label><input type="radio" name="s3" value="ge"> 4</label>
+                <label><input type="radio" name="s3" value="gf"> 4</label>
+                <label><input type="radio" name="s3" value="gg"> 4</label>
+                <label><input type="radio" name="s3" value="gh"> 4</label>
+                <label><input type="radio" name="s3" value="gi"> 4</label>
+                <label><input type="radio" name="s3" value="gj"> 4</label>
+                <label><input type="radio" name="s3" value="gk"> 4</label>
+                <label><input type="radio" name="s3" value="gl"> 4</label>
+                <label><input type="radio" name="s3" value="gm"> 4</label>
+                <label><input type="radio" name="s3" value="gn"> 4</label>
+                <label><input type="radio" name="s3" value="go"> 4</label>
+                <label><input type="radio" name="s3" value="gp"> 4</label>
+                <label><input type="radio" name="s3" value="gq"> 4</label>
+                <label><input type="radio" name="s3" value="gr"> 4</label>
+                <label><input type="radio" name="s3" value="gs"> 4</label>
+                <label><input type="radio" name="s3" value="gt"> 4</label>
+                <label><input type="radio" name="s3" value="gu"> 4</label>
+                <label><input type="radio" name="s3" value="gv"> 4</label>
+                <label><input type="radio" name="s3" value="gw"> 4</label>
+                <label><input type="radio" name="s3" value="gx"> 4</label>
+                <label><input type="radio" name="s3" value="gy"> 4</label>
+                <label><input type="radio" name="s3" value="gz"> 4</label>
+                <label><input type="radio" name="s3" value="ha"> 4</label>
+                <label><input type="radio" name="s3" value="hb"> 4</label>
+                <label><input type="radio" name="s3" value="hc"> 4</label>
+                <label><input type="radio" name="s3" value="hd"> 4</label>
+                <label><input type="radio" name="s3" value="he"> 4</label>
+                <label><input type="radio" name="s3" value="hf"> 4</label>
+                <label><input type="radio" name="s3" value="hg"> 4</label>
+                <label><input type="radio" name="s3" value="hh"> 4</label>
+                <label><input type="radio" name="s3" value="hi"> 4</label>
+                <label><input type="radio" name="s3" value="hj"> 4</label>
+                <label><input type="radio" name="s3" value="hk"> 4</label>
+                <label><input type="radio" name="s3" value="hl"> 4</label>
+                <label><input type="radio" name="s3" value="hm"> 4</label>
+                <label><input type="radio" name="s3" value="hn"> 4</label>
+                <label><input type="radio" name="s3" value="ho"> 4</label>
+                <label><input type="radio" name="s3" value="hp"> 4</label>
+                <label><input type="radio" name="s3" value="hq"> 4</label>
+                <label><input type="radio" name="s3" value="hr"> 4</label>
+                <label><input type="radio" name="s3" value="hs"> 4</label>
+                <label><input type="radio" name="s3" value="ht"> 4</label>
+                <label><input type="radio" name="s3" value="hu"> 4</label>
+                <label><input type="radio" name="s3" value="hv"> 4</label>
+                <label><input type="radio" name="s3" value="hw"> 4</label>
+                <label><input type="radio" name="s3" value="hx"> 4</label>
+                <label><input type="radio" name="s3" value="hy"> 4</label>
+                <label><input type="radio" name="s3" value="hz"> 4</label>
+                <label><input type="radio" name="s3" value="ia"> 4</label>
+                <label><input type="radio" name="s3" value="ib"> 4</label>
+                <label><input type="radio" name="s3" value="ic"> 4</label>
+                <label><input type="radio" name="s3" value="id"> 4</label>
+                <label><input type="radio" name="s3" value="ie"> 4</label>
+                <label><input type="radio" name="s3" value="if"> 4</label>
+                <label><input type="radio" name="s3" value="ig"> 4</label>
+                <label><input type="radio" name="s3" value="ih"> 4</label>
+                <label><input type="radio" name="s3" value="ii"> 4</label>
+                <label><input type="radio" name="s3" value="ij"> 4</label>
+                <label><input type="radio" name="s3" value="ik"> 4</label>
+                <label><input type="radio" name="s3" value="il"> 4</label>
+                <label><input type="radio" name="s3" value="im"> 4</label>
+                <label><input type="radio" name="s3" value="in"> 4</label>
+                <label><input type="radio" name="s3" value="io"> 4</label>
+                <label><input type="radio" name="s3" value="ip"> 4</label>
+                <label><input type="radio" name="s3" value="iq"> 4</label>
+                <label><input type="radio" name="s3" value="ir"> 4</label>
+                <label><input type="radio" name="s3" value="is"> 4</label>
+                <label><input type="radio" name="s3" value="it"> 4</label>
+                <label><input type="radio" name="s3" value="iu"> 4</label>
+                <label><input type="radio" name="s3" value="iv"> 4</label>
+                <label><input type="radio" name="s3" value="iw"> 4</label>
+                <label><input type="radio" name="s3" value="ix"> 4</label>
+                <label><input type="radio" name="s3" value="iy"> 4</label>
+                <label><input type="radio" name="s3" value="iz"> 4</label>
+                <label><input type="radio" name="s3" value="ja"> 4</label>
+                <label><input type="radio" name="s3" value="jb"> 4</label>
+                <label><input type="radio" name="s3" value="jc"> 4</label>
+                <label><input type="radio" name="s3" value="jd"> 4</label>
+                <label><input type="radio" name="s3" value="je"> 4</label>
+                <label><input type="radio" name="s3" value="jf"> 4</label>
+                <label><input type="radio" name="s3" value="jg"> 4</label>
+                <label><input type="radio" name="s3" value="jh"> 4</label>
+                <label><input type="radio" name="s3" value="ji"> 4</label>
+                <label><input type="radio" name="s3" value="jj"> 4</label>
+                <label><input type="radio" name="s3" value="jk"> 4</label>
+                <label><input type="radio" name="s3" value="jl"> 4</label>
+                <label><input type="radio" name="s3" value="jm"> 4</label>
+                <label><input type="radio" name="s3" value="jn"> 4</label>
+                <label><input type="radio" name="s3" value="jo"> 4</label>
+                <label><input type="radio" name="s3" value="jp"> 4</label>
+                <label><input type="radio" name="s3" value="jq"> 4</label>
+                <label><input type="radio" name="s3" value="jr"> 4</label>
+                <label><input type="radio" name="s3" value="js"> 4</label>
+                <label><input type="radio" name="s3" value="jt"> 4</label>
+                <label><input type="radio" name="s3" value="ju"> 4</label>
+                <label><input type="radio" name="s3" value="jv"> 4</label>
+                <label><input type="radio" name="s3" value="jw"> 4</label>
+                <label><input type="radio" name="s3" value="jx"> 4</label>
+                <label><input type="radio" name="s3" value="jy"> 4</label>
+                <label><input type="radio" name="s3" value="jz"> 4</label>
+            </div>
+            <button class="btn-cek" onclick="cekJawaban(3, 'b')">Cek Jawaban</button>
+            <div class="pembahasan" id="pembahasan3"></div>
+        </div>
+        <!-- Soal 4 -->
+        <div class="soal" id="soal4">
+            <p>4. Persamaan kuadrat yang akar-akarnya 4 dan -3 adalah ...</p>
+            <div class="opsi">
+                <label><input type="radio" name="s4" value="a"> x² - x - 12 = 0</label>
+                <label><input type="radio" name="s4" value="b"> x² + x - 12 = 0</label>
+                <label><input type="radio" name="s4" value="c"> x² - x + 12 = 0</label>
+                <label><input type="radio" name="s4" value="d"> x² + x + 12 = 0</label>
+            </div>
+            <button class="btn-cek" onclick="cekJawaban(4, 'a')">Cek Jawaban</button>
+            <div class="pembahasan" id="pembahasan4"></div>
+        </div>
+        <!-- Soal 5 -->
+        <div class="soal" id="soal5">
+            <p>5. Jika persamaan kuadrat x² + px + q = 0 memiliki akar-akar 2 dan 5, maka nilai p dan q berturut-turut adalah ...</p>
+            <div class="opsi">
+                <label><input type="radio" name="s5" value="a"> 7 dan 10</label>
+                <label><input type="radio" name="s5" value="b"> -7 dan 10</label>
+                <label><input type="radio" name="s5" value="c"> 7 dan -10</label>
+                <label><input type="radio" name="s5" value="d"> -7 dan -10</label>
+            </div>
+            <button class="btn-cek" onclick="cekJawaban(5, 'b')">Cek Jawaban</button>
+            <div class="pembahasan" id="pembahasan5"></div>
         </div>
     </main>
     <footer>
         &copy;2025 10 SMK
     </footer>
+    <script>
+        const pembahasan = [
+            "",
+            "<span class='benar'>Jawaban benar!</span> <br> Bentuk umum persamaan kuadrat adalah <b>ax² + bx + c = 0</b>.",
+            "<span class='benar'>Jawaban benar!</span> <br> x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3)=0, sehingga x=2 atau x=3.",
+            "<span class='benar'>Jawaban benar!</span> <br> Diskriminan D = b² - 4ac = 4² - 4×1×3 = 16 - 12 = 4.",
+            "<span class='benar'>Jawaban benar!</span> <br> Jika akar-akar 4 dan -3, maka persamaan: (x-4)(x+3)=x²-4x+3x-12=x²-x-12=0.",
+            "<span class='benar'>Jawaban benar!</span> <br> Jumlah akar = -(p) = 2+5=7 → p=-7. Hasil kali akar = q = 2×5=10."
+        ];
+        const pembahasanSalah = [
+            "",
+            "<span class='salah'>Jawaban kurang tepat.</span> <br> Bentuk umum persamaan kuadrat adalah <b>ax² + bx + c = 0</b>.",
+            "<span class='salah'>Jawaban kurang tepat.</span> <br> x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3)=0, sehingga x=2 atau x=3.",
+            "<span class='salah'>Jawaban kurang tepat.</span> <br> Diskriminan D = b² - 4ac = 4² - 4×1×3 = 16 - 12 = 4.",
+            "<span class='salah'>Jawaban kurang tepat.</span> <br> Jika akar-akar 4 dan -3, maka persamaan: (x-4)(x+3)=x²-4x+3x-12=x²-x-12=0.",
+            "<span class='salah'>Jawaban kurang tepat.</span> <br> Jumlah akar = -(p) = 2+5=7 → p=-7. Hasil kali akar = q = 2×5=10."
+        ];
+        function cekJawaban(no, kunci) {
+            const radios = document.getElementsByName('s'+no);
+            let jawaban = "";
+            for(let r of radios) {
+                if(r.checked) {
+                    jawaban = r.value;
+                    break;
+                }
+            }
+            let pemb = document.getElementById("pembahasan"+no);
+            if(jawaban === "") {
+                pemb.style.display = "block";
+                pemb.innerHTML = "<span class='salah'>Silakan pilih jawaban terlebih dahulu!</span>";
+            } else if(jawaban === kunci) {
+                pemb.style.display = "block";
+                pemb.innerHTML = pembahasan[no];
+            } else {
+                pemb.style.display = "block";
+                pemb.innerHTML = pembahasanSalah[no];
+            }
+        }
+    </script>
 </body>
 </html>
