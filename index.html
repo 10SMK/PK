@@ -188,3 +188,235 @@
       }
       .badge-img {
         margin: 0 0 12px 0;
+        width: 40px;
+        height: 40px;
+      }
+      .indent-block {
+        margin-left: 10px;
+        padding-left: 10px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Persamaan Kuadrat</h1>
+  </header>
+  <main>
+    <section>
+      <div class="badge-img" title="Pengertian">
+        <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
+      </div>
+      <div class="content">
+        <h2>Pengertian Persamaan Kuadrat</h2>
+        <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
+        <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
+          $$ ax^2 + bx + c = 0 $$
+        </p>
+        <ul>
+          <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan \( a \neq 0 \).</li>
+          <li><b>x</b> adalah variabel yang dicari nilainya.</li>
+        </ul>
+        <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+      </div>
+    </section>
+
+    <div class="indent-block">
+      <h2 style="margin-top:0;">Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
+      <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - x_1)(x - x_2) = 0 $$
+      </p>
+      <p>Contoh:</p>
+      <p>Tentukan persamaan kuadrat dengan akar-akar 2 dan 3:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - 2)(x - 3) = 0 $$
+      </p>
+      <p>Jika dikembangkan:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 5x + 6 = 0 $$
+      </p>
+
+      <h2>Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar</h2>
+      <p>Jika yang diketahui pada soal hanya jumlah dan hasil kali akar-akarnya, Sobat Pintar bisa menggunakan rumus:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - (x_1 + x_2)x + x_1 x_2 = 0 $$
+      </p>
+      <p>Contoh soal:</p>
+      <p><b>Tentukan persamaan kuadrat yang akar-akarnya jumlahnya 7 dan hasil kalinya 12!</b></p>
+      <p><b>Penyelesaian:</b></p>
+      <p>Persamaan kuadratnya:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 7x + 12 = 0 $$
+      </p>
+    </div>
+
+    <section>
+      <div class="badge-img" title="Contoh Soal">
+        <img src="https://img.icons8.com/fluency/48/000000/test-passed.png" alt="Contoh Soal Badge" />
+      </div>
+      <div class="content">
+        <h2>Contoh Soal Persamaan Kuadrat</h2>
+        <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
+        <p style="text-align:center; font-size:1.3rem;">
+          $$ x^2 - 5x + 6 = 0 $$
+        </p>
+        <details>
+          <summary>Penjelasan dan Jawaban</summary>
+          <p>Kita faktorkan persamaan tersebut:</p>
+          <p style="text-align:center; font-size:1.3rem;">
+            $$ (x - 2)(x - 3) = 0 $$
+          </p>
+          <p>Maka, akar-akarnya adalah:</p>
+          <p style="text-align:center; font-size:1.3rem;">
+            $$ x = 2 \quad \text{atau} \quad x = 3 $$
+          </p>
+        </details>
+      </div>
+    </section>
+     <section>
+      <div class="badge-img" title="Latihan Soal Dinamis">
+        <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+      </div>
+      <div class="content">
+        <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
+        <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya".</p>
+        <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
+        <details style="margin-top:10px;">
+          <summary>Penjelasan Jawaban</summary>
+          <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
+        </details>
+        <button onclick="gantiSoal()">Soal Lainnya</button>
+      </div>
+    </section>
+
+    <section>
+      <div class="badge-img" title="PPT Menarik">
+        <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
+      </div>
+      <div class="content">
+        <h2>PPT tentang Persamaan Kuadrat</h2>
+        <ul>
+          
+        </ul>
+  
+      </div>
+    </section>
+
+    <section>
+      <div class="badge-img" title="E-Book">
+        <img src="https://img.icons8.com/fluency/48/000000/ebook.png" alt="E-Book Badge" />
+      </div>
+      <div class="content">
+        <h2>E-Book tentang Persamaan Kuadrat</h2>
+        <p>E-book dapat berisi:</p>
+        <ul>
+          <li>Pengertian dan sejarah persamaan kuadrat.</li>
+          <li>Metode penyelesaian lengkap (faktorisasi, rumus kuadrat, melengkapi kuadrat).</li>
+          <li>Contoh soal dan pembahasan.</li>
+          <li>Aplikasi persamaan kuadrat dalam kehidupan nyata.</li>
+          <li>Latihan soal dan kuis interaktif.</li>
+        </ul>
+        <p>Buat dengan <a href="https://docs.google.com/document" target="_blank" rel="noopener noreferrer">Google Docs</a> atau <a href="https://www.microsoft.com/en-us/microsoft-365/word" target="_blank" rel="noopener noreferrer">Microsoft Word</a>, lalu simpan sebagai PDF.</p>
+      </div>
+    </section>
+
+    <div class="indent-block">
+    <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
+  <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
+
+  <figure>
+    <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Pelangi" style="max-width:100%; border-radius:12px;" />
+    <figcaption>Pelangi yang merupakan lengkungan cahaya warna-warni (Photo by Ben Mack from Pexels)</figcaption>
+  </figure>
+
+  <figure>
+    <img src="https://www.wikihow.com/images_en/thumb/9/9e/Kick-a-Soccer-Ball-Step-6-Version-3.jpg/v4-460px-Kick-a-Soccer-Ball-Step-6-Version-3.jpg" alt="Tendangan Bola" style="max-width:100%; border-radius:12px;" />
+    <figcaption>Gerakan tendangan bola membentuk lintasan parabola (Photo by wikihow.com)</figcaption>
+  </figure>
+    
+    <section>
+      <div class="badge-img" title="Video YouTube">
+        <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="Video Badge" />
+      </div>
+      <div class="content">
+        <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=cw05wO1rHko" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat - Pak Benni</a></li>
+          <li><a href="https://www.youtube.com/watch?v=PXqSO3hsCkc" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat SMP - Kejarcita</a></li>
+          <li><a href="https://www.youtube.com/watch?v=uo2J49DkbJs" target="_blank" rel="noopener noreferrer">Latihan Soal Persamaan Kuadrat - Mamas Guru</a></li>
+        </ul>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    &copy; 2025 10 SMK
+  </footer>
+
+  <script>
+    const latihanSoal = [
+      {
+        soal: `Tentukan akar-akar dari persamaan kuadrat $$x^2 - 4x - 5 = 0$$`,
+        jawaban: `Faktorkan persamaan: $$x^2 - 4x - 5 = (x - 5)(x + 1) = 0$$<br>Sehingga akar-akarnya adalah $$x = 5$$ dan $$x = -1$$.`
+      },
+      {
+        soal: `Selesaikan persamaan kuadrat $$2x^2 + 3x - 2 = 0$$`,
+        jawaban: `Gunakan rumus kuadrat:<br>$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$<br>Dengan $$a=2$$, $$b=3$$, $$c=-2$$, maka:<br>$$x = \\frac{-3 \\pm \\sqrt{9 + 16}}{4} = \\frac{-3 \\pm 5}{4}$$<br>Jadi $$x = 0.5$$ atau $$x = -2$$.`
+      },
+      {
+        soal: `Jika $$x^2 + 6x + 9 = 0$$, berapakah akar-akarnya?`,
+        jawaban: `Persamaan ini dapat difaktorkan menjadi $$(x + 3)^2 = 0$$<br>Sehingga akar kembar adalah $$x = -3$$.`
+      },
+      {
+        soal: `Tentukan akar-akar dari $$3x^2 - 12 = 0$$`,
+        jawaban: `Pindahkan konstanta: $$3x^2 = 12$$<br>$$x^2 = 4$$<br>Maka akar-akarnya adalah $$x = 2$$ dan $$x = -2$$.`
+      },
+      {
+        soal: `Selesaikan persamaan kuadrat $$x^2 - 7x + 12 = 0$$`,
+        jawaban: `Faktorkan: $$(x - 3)(x - 4) = 0$$<br>Jadi akar-akarnya adalah $$x = 3$$ dan $$x = 4$$.`
+      }
+    ];
+
+    async function gantiSoal() {
+      const idx = Math.floor(Math.random() * latihanSoal.length);
+      const soalEl = document.getElementById('soal-dinamis');
+      const jawabanEl = document.getElementById('jawaban-dinamis');
+
+      soalEl.innerHTML = latihanSoal[idx].soal;
+      jawabanEl.innerHTML = latihanSoal[idx].jawaban;
+
+      if (window.MathJax && MathJax.typesetPromise) {
+        try {
+          await MathJax.typesetPromise();
+        } catch (err) {
+          console.error('MathJax rendering error:', err);
+        }
+      }
+    }
+
+    window.onload = () => {
+      if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(() => {
+          gantiSoal();
+        }).catch((err) => {
+          console.error('MathJax startup error:', err);
+          gantiSoal();
+        });
+      } else {
+        gantiSoal();
+      }
+    };
+  </script>
+</body>
+</html>
+
+    <!-- Bagian lain tetap seperti sebelumnya ... -->
+    <!-- ... -->
+  </main>
+  <footer>
+    &copy; 2025 10 SMK
+  </footer>
+  <!-- Script latihan soal dinamis, MathJax, dll tetap di sini -->
+</body>
+</html>
