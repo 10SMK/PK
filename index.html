@@ -1,264 +1,157 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8" />
-    <title>Persamaan Kuadrat</title>
-    <!-- Load MathJax for rendering equations -->
-    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-    <script id="MathJax-script" async
-      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-    </script>
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background: #f0f4f8;
-            margin: 0; padding: 0 20px 60px 20px;
-            color: #222;
-            line-height: 1.6;
-        }
-        header, footer {
-            background-color: #2a64d6;
-            color: white;
-            text-align: center;
-            padding: 20px 10px;
-            border-radius: 0 0 10px 10px;
-            font-weight: 700;
-            font-size: 1.8rem;
-        }
-        footer {
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            font-weight: 400;
-            font-size: 1rem;
-            border-radius: 10px 10px 0 0;
-            background-color: #1f4bb6;
-        }
-        main {
-            max-width: 900px;
-            margin: 30px auto 80px auto;
-            background: white;
-            padding: 30px 40px;
-            border-radius: 12px;
-            box-shadow: 0 8px 20px rgb(0 0 0 / 0.1);
-        }
-        h2 {
-            color: #2a64d6;
-            margin-top: 40px;
-            border-bottom: 2px solid #2a64d6;
-            padding-bottom: 6px;
-        }
-        code {
-            background: #e2e8f0;
-            padding: 2px 6px;
-            border-radius: 4px;
-            font-family: Consolas, monospace;
-            font-weight: 600;
-        }
-        button {
-            margin-top: 15px;
-            background-color: #2a64d6;
-            color: white;
-            border: none;
-            padding: 10px 18px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-weight: 600;
-            font-size: 1rem;
-            transition: background-color 0.3s ease;
-        }
-        button:hover {
-            background-color: #1f4bb6;
-        }
-        details {
-            margin-top: 8px;
-            background: #f9fafb;
-            padding: 10px 15px;
-            border-radius: 6px;
-            border: 1px solid #d1d5db;
-        }
-        a {
-            color: #2a64d6;
-            text-decoration: none;
-            font-weight: 600;
-        }
-        a:hover {
-            text-decoration: underline;
-        }
-        ul {
-            margin-left: 20px;
-        }
-        .jawaban {
-            margin-top: 8px;
-            background: #eef4ff;
-            padding: 12px 15px;
-            border-radius: 6px;
-            border: 1px solid #a3c1ff;
-            white-space: pre-line;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <title>Persamaan Kuadrat - Tema Doodle</title>
+  <style>
+    /* Palet warna dari banner: putih, biru muda, hijau doodle */
+    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Comic+Sans+MS&display=swap');
+
+    body {
+      margin: 0;
+      padding: 0 20px 40px 20px;
+      background: linear-gradient(135deg, #d9f0ff 0%, #e6f7e6 100%);
+      font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      color: #2c3e50;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    header {
+      width: 100%;
+      max-width: 1280px;
+      text-align: center;
+      padding: 20px 0 10px 0;
+      background-color: #ffffffcc; /* putih transparan */
+      border-radius: 0 0 20px 20px;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    header img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 15px;
+      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
+      margin-bottom: 15px;
+      user-select: none;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      margin: 0;
+      color: #2a64d6; /* biru cerah */
+      text-shadow: 1px 1px 2px #a0c4ff;
+    }
+
+    main {
+      max-width: 900px;
+      background: #ffffffdd;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      margin-top: 30px;
+      line-height: 1.6;
+    }
+
+    h2 {
+      color: #27ae60; /* hijau doodle */
+      border-bottom: 3px solid #27ae60;
+      padding-bottom: 6px;
+      margin-top: 40px;
+    }
+
+    a {
+      color: #2a64d6;
+      font-weight: 700;
+      text-decoration: none;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+
+    footer {
+      margin-top: auto;
+      padding: 15px 0;
+      width: 100%;
+      max-width: 1280px;
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      user-select: none;
+    }
+
+    /* Responsive */
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 2rem;
+      }
+      main {
+        padding: 20px;
+        margin-top: 20px;
+      }
+    }
+  </style>
 </head>
 <body>
-    <header>
-        Persamaan Kuadrat
-    </header>
-    <main>
-        <section id="pengertian">
-            <h2>Pengertian Persamaan Kuadrat</h2>
-            <p>
-                Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:
-            </p>
-            <p style="text-align:center; font-size:1.3rem;">
-                $$ ax^2 + bx + c = 0 $$
-            </p>
-            <ul>
-                <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan <code>a \neq 0</code>.</li>
-                <li><b>x</b> adalah variabel yang dicari nilainya.</li>
-            </ul>
-            <p>
-                Persamaan kuadrat sering digunakan untuk memodelkan berbagai fenomena dalam matematika, fisika, dan teknik, seperti lintasan parabola, optimasi, dan lain-lain.
-            </p>
-        </section>
+  <header>
+    <!-- Ganti src sesuai lokasi gambar banner Anda -->
+    <img src="./Teacher's%20Classroom%20Poster%20in%20White%20Blue%20and%20Green%20Doodle%20Style%20(1280%20x%20640%20px).png" alt="Teacher's Classroom Poster" />
+    <h1>Persamaan Kuadrat</h1>
+  </header>
 
-        <section id="contoh-soal">
-            <h2>Contoh Soal Persamaan Kuadrat Beserta Penjelasan</h2>
-            <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
-            <p style="text-align:center; font-size:1.2rem;">
-                $$ x^2 - 5x + 6 = 0 $$
-            </p>
-            <details>
-                <summary><b>Penjelasan dan Jawaban</b></summary>
-                <p>
-                    Kita faktorkan persamaan tersebut:
-                </p>
-                <p style="text-align:center; font-size:1.2rem;">
-                    $$ x^2 - 5x + 6 = (x - 2)(x - 3) = 0 $$
-                </p>
-                <p>
-                    Maka, akar-akarnya adalah:
-                </p>
-                <p style="text-align:center; font-size:1.2rem;">
-                    $$ x = 2 \quad \text{atau} \quad x = 3 $$
-                </p>
-            </details>
-        </section>
+  <main>
+    <section>
+      <h2>Pengertian Persamaan Kuadrat</h2>
+      <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
+      <p style="text-align:center; font-size:1.3rem; font-weight: 700;">
+        $$ ax^2 + bx + c = 0 $$
+      </p>
+      <ul>
+        <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan <code>a \neq 0</code>.</li>
+        <li><b>x</b> adalah variabel yang dicari nilainya.</li>
+      </ul>
+      <p>Persamaan kuadrat banyak digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+    </section>
 
-        <section id="latihan-soal">
-            <h2>Latihan Soal Persamaan Kuadrat Dinamis dengan Pembahasan</h2>
-            <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya".</p>
-            <div style="background:#eef4ff; padding:15px; border-radius:8px; font-size:1.2rem; min-height: 80px;" id="soal-dinamis">
-                <!-- Soal muncul di sini -->
-            </div>
-            <details style="margin-top:10px;">
-                <summary><b>Penjelasan Jawaban</b></summary>
-                <div id="jawaban-dinamis" class="jawaban"></div>
-            </details>
-            <button onclick="gantiSoal()">Soal Lainnya</button>
-        </section>
+    <section>
+      <h2>Contoh Soal</h2>
+      <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
+      <p style="text-align:center; font-size:1.2rem;">
+        $$ x^2 - 5x + 6 = 0 $$
+      </p>
+      <details>
+        <summary><b>Penjelasan dan Jawaban</b></summary>
+        <p>Kita faktorkan persamaan tersebut:</p>
+        <p style="text-align:center; font-size:1.2rem;">
+          $$ (x - 2)(x - 3) = 0 $$
+        </p>
+        <p>Maka, akar-akarnya adalah:</p>
+        <p style="text-align:center; font-size:1.2rem;">
+          $$ x = 2 \quad \text{atau} \quad x = 3 $$
+        </p>
+      </details>
+    </section>
 
-        <section id="ppt">
-            <h2>Tips Membuat PPT Menarik tentang Persamaan Kuadrat</h2>
-            <ul>
-                <li>Gunakan warna kontras dan font yang mudah dibaca.</li>
-                <li>Masukkan grafik parabola untuk visualisasi.</li>
-                <li>Jelaskan langkah-langkah penyelesaian dengan animasi bertahap.</li>
-                <li>Sisipkan contoh soal dan pembahasan secara interaktif.</li>
-                <li>Gunakan diagram dan ilustrasi aplikasi persamaan kuadrat dalam kehidupan sehari-hari.</li>
-            </ul>
-            <p>Anda dapat membuatnya dengan <a href="https://slides.google.com" target="_blank" rel="noopener noreferrer">Google Slides</a> atau <a href="https://www.canva.com/presentations/templates/" target="_blank" rel="noopener noreferrer">Canva</a>.</p>
-        </section>
+    <section>
+      <h2>Latihan Soal</h2>
+      <p>Soal dan pembahasan akan ditampilkan secara dinamis pada halaman ini.</p>
+      <!-- Bisa ditambahkan script latihan soal dinamis di sini -->
+    </section>
+  </main>
 
-        <section id="ebook">
-            <h2>E-Book tentang Persamaan Kuadrat</h2>
-            <p>Sebuah e-book yang lengkap dapat berisi:</p>
-            <ul>
-                <li>Pengertian dan sejarah persamaan kuadrat.</li>
-                <li>Bentuk umum dan sifat-sifat persamaan kuadrat.</li>
-                <li>Metode penyelesaian: faktorisasi, melengkapi kuadrat, rumus kuadrat.</li>
-                <li>Contoh soal dan pembahasan lengkap.</li>
-                <li>Aplikasi persamaan kuadrat dalam kehidupan nyata.</li>
-                <li>Latihan soal dan kuis interaktif.</li>
-            </ul>
-            <p>Anda dapat membuat e-book dengan <a href="https://docs.google.com/document" target="_blank" rel="noopener noreferrer">Google Docs</a> atau <a href="https://www.microsoft.com/en-us/microsoft-365/word" target="_blank" rel="noopener noreferrer">Microsoft Word</a>, lalu ekspor ke PDF.</p>
-        </section>
+  <footer>
+    &copy; 2025 10 SMK
+  </footer>
 
-        <section id="video">
-            <h2>Video YouTube tentang Persamaan Kuadrat</h2>
-            <ul>
-                <li><a href="https://www.youtube.com/watch?v=cw05wO1rHko" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat - Pak Benni</a></li>
-                <li><a href="https://www.youtube.com/watch?v=PXqSO3hsCkc" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat SMP - Kejarcita</a></li>
-                <li><a href="https://www.youtube.com/watch?v=uo2J49DkbJs" target="_blank" rel="noopener noreferrer">Latihan Soal Persamaan Kuadrat - Mamas Guru</a></li>
-            </ul>
-        </section>
-    </main>
-
-    <footer>
-        &copy; 2025 10 SMK
-    </footer>
-
-    <script>
-        const latihanSoal = [
-            {
-                soal: `Tentukan akar-akar dari persamaan kuadrat $$x^2 - 4x - 5 = 0$$`,
-                jawaban: `Faktorkan persamaan: $$x^2 - 4x - 5 = (x - 5)(x + 1) = 0$$\nSehingga akar-akarnya adalah $$x = 5$$ dan $$x = -1$$.`
-            },
-            {
-                soal: `Selesaikan persamaan kuadrat $$2x^2 + 3x - 2 = 0$$`,
-                jawaban: `Gunakan rumus kuadrat:\n$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$\nDengan $$a=2$$, $$b=3$$, $$c=-2$$, maka:\n$$x = \\frac{-3 \\pm \\sqrt{9 + 16}}{4} = \\frac{-3 \\pm 5}{4}$$\nJadi $$x = \\frac{2}{4} = 0.5$$ atau $$x = \\frac{-8}{4} = -2$$.`
-            },
-            {
-                soal: `Jika $$x^2 + 6x + 9 = 0$$, berapakah akar-akarnya?`,
-                jawaban: `Persamaan ini dapat difaktorkan menjadi $$(x + 3)^2 = 0$$\nSehingga akar kembar adalah $$x = -3$$.`
-            },
-            {
-                soal: `Tentukan akar-akar dari $$3x^2 - 12 = 0$$`,
-                jawaban: `Pindahkan konstanta: $$3x^2 = 12$$\n$$x^2 = 4$$\nMaka akar-akarnya adalah $$x = 2$$ dan $$x = -2$$.`
-            },
-            {
-                soal: `Selesaikan persamaan kuadrat $$x^2 - 7x + 12 = 0$$`,
-                jawaban: `Faktorkan: $$(x - 3)(x - 4) = 0$$\nJadi akar-akarnya adalah $$x = 3$$ dan $$x = 4$$.`
-            },
-            {
-                soal: `Diketahui persamaan kuadrat $$2x^2 - 5x - 12 = 0$$, tentukan akar-akarnya!`,
-                jawaban: `Gunakan rumus kuadrat:\n$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$\nDengan $$a=2$$, $$b=-5$$, $$c=-12$$, maka:\n$$x = \\frac{5 \\pm \\sqrt{25 + 96}}{4} = \\frac{5 \\pm \\sqrt{121}}{4}$$\nJadi $$x = \\frac{5 + 11}{4} = 4$$ atau $$x = \\frac{5 - 11}{4} = -1.5$$.`
-            },
-            {
-                soal: `Himpunan penyelesaian dari persamaan kuadrat $$2x^2 - x - 15 = 0$$ adalah?`,
-                jawaban: `Diketahui:\n$$a=2, b=-1, c=-15$$\nCari dua bilangan m dan n yang jika dijumlahkan menghasilkan b = -1 dan jika dikalikan menghasilkan ac = -30.\nBilangan yang memenuhi adalah m=5 dan n=-6.\nFaktorkan:\n$$2x^2 - x - 15 = (2x + 5)(x - 3) = 0$$\nJadi, akar-akarnya adalah $$x = -\\frac{5}{2}$$ dan $$x = 3$$.`
-            }
-        ];
-
-        async function gantiSoal() {
-            const idx = Math.floor(Math.random() * latihanSoal.length);
-            const soalEl = document.getElementById('soal-dinamis');
-            const jawabanEl = document.getElementById('jawaban-dinamis');
-
-            // Ganti isi soal dan jawaban
-            soalEl.innerHTML = latihanSoal[idx].soal;
-            // Replace newline with <br> for jawaban
-            jawabanEl.innerHTML = latihanSoal[idx].jawaban.replace(/\n/g, '<br>');
-
-            // Render ulang MathJax
-            if (window.MathJax && MathJax.typesetPromise) {
-                try {
-                    await MathJax.typesetPromise();
-                } catch (err) {
-                    console.error('MathJax rendering error:', err);
-                }
-            }
-        }
-
-        window.onload = () => {
-            if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
-                MathJax.startup.promise.then(() => {
-                    gantiSoal();
-                }).catch((err) => {
-                    console.error('MathJax startup error:', err);
-                    gantiSoal();
-                });
-            } else {
-                gantiSoal();
-            }
-        };
-    </script>
+  <!-- MathJax untuk render persamaan matematika -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
 </body>
 </html>
