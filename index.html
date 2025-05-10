@@ -11,7 +11,6 @@
     src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
   </script>
   <style>
-    /* Background doodle pattern from SVG base64 (simple hand-drawn circles) */
     body {
       margin: 0;
       padding: 0 20px 60px 20px;
@@ -61,30 +60,34 @@
     }
 
     section {
-      position: relative;
+      display: flex;
+      align-items: flex-start;
       margin-bottom: 50px;
-      padding-left: 60px;
-      border-left: 5px solid #8bc34a;
+      padding: 20px 20px 20px 0;
       background: #f9fff4;
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(139,195,74,0.15);
+      position: relative;
     }
 
-    /* Badge style */
-    section::before {
-      content: attr(data-badge);
-      position: absolute;
-      left: 10px;
-      top: 20px;
-      background: #8bc34a;
-      color: white;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 6px 14px;
-      border-radius: 20px;
-      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    /* Badge image container */
+    .badge-img {
+      flex-shrink: 0;
+      width: 48px;
+      height: 48px;
+      margin-right: 18px;
       user-select: none;
-      font-family: 'Comic Neue', cursive;
+    }
+    .badge-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 2px 8px rgba(139,195,74,0.4);
+    }
+
+    section > div.content {
+      flex-grow: 1;
     }
 
     h2 {
@@ -173,17 +176,13 @@
         padding: 20px;
       }
       section {
-        padding-left: 45px;
+        flex-direction: column;
+        padding-left: 0;
       }
-      section::before {
-        top: 15px;
-        left: 5px;
-        padding: 5px 12px;
-        font-size: 0.8rem;
-      }
-      button {
-        width: 100%;
-        font-size: 1rem;
+      .badge-img {
+        margin: 0 0 12px 0;
+        width: 40px;
+        height: 40px;
       }
     }
   </style>
@@ -194,80 +193,110 @@
   </header>
 
   <main>
-    <section data-badge="Pengertian">
-      <h2>Pengertian Persamaan Kuadrat</h2>
-      <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
-      <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
-        $$ ax^2 + bx + c = 0 $$
-      </p>
-      <ul>
-        <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan <code>a \neq 0</code>.</li>
-        <li><b>x</b> adalah variabel yang dicari nilainya.</li>
-      </ul>
-      <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
-    </section>
-
-    <section data-badge="Contoh Soal">
-      <h2>Contoh Soal Persamaan Kuadrat</h2>
-      <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
-      <p style="text-align:center; font-size:1.3rem;">
-        $$ x^2 - 5x + 6 = 0 $$
-      </p>
-      <details>
-        <summary>Penjelasan dan Jawaban</summary>
-        <p>Kita faktorkan persamaan tersebut:</p>
-        <p style="text-align:center; font-size:1.3rem;">
-          $$ (x - 2)(x - 3) = 0 $$
+    <section>
+      <div class="badge-img" title="Pengertian">
+        <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
+      </div>
+      <div class="content">
+        <h2>Pengertian Persamaan Kuadrat</h2>
+        <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
+        <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
+          $$ ax^2 + bx + c = 0 $$
         </p>
-        <p>Maka, akar-akarnya adalah:</p>
+        <ul>
+          <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan <code>a \neq 0</code>.</li>
+          <li><b>x</b> adalah variabel yang dicari nilainya.</li>
+        </ul>
+        <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+      </div>
+    </section>
+
+    <section>
+      <div class="badge-img" title="Contoh Soal">
+        <img src="https://img.icons8.com/fluency/48/000000/test-passed.png" alt="Contoh Soal Badge" />
+      </div>
+      <div class="content">
+        <h2>Contoh Soal Persamaan Kuadrat</h2>
+        <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
         <p style="text-align:center; font-size:1.3rem;">
-          $$ x = 2 \quad \text{atau} \quad x = 3 $$
+          $$ x^2 - 5x + 6 = 0 $$
         </p>
-      </details>
+        <details>
+          <summary>Penjelasan dan Jawaban</summary>
+          <p>Kita faktorkan persamaan tersebut:</p>
+          <p style="text-align:center; font-size:1.3rem;">
+            $$ (x - 2)(x - 3) = 0 $$
+          </p>
+          <p>Maka, akar-akarnya adalah:</p>
+          <p style="text-align:center; font-size:1.3rem;">
+            $$ x = 2 \quad \text{atau} \quad x = 3 $$
+          </p>
+        </details>
+      </div>
     </section>
 
-    <section data-badge="Latihan Soal Dinamis">
-      <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
-      <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya".</p>
-      <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
-      <details style="margin-top:10px;">
-        <summary>Penjelasan Jawaban</summary>
-        <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
-      </details>
-      <button onclick="gantiSoal()">Soal Lainnya</button>
+    <section>
+      <div class="badge-img" title="Latihan Soal Dinamis">
+        <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+      </div>
+      <div class="content">
+        <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
+        <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya".</p>
+        <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
+        <details style="margin-top:10px;">
+          <summary>Penjelasan Jawaban</summary>
+          <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
+        </details>
+        <button onclick="gantiSoal()">Soal Lainnya</button>
+      </div>
     </section>
 
-    <section data-badge="PPT Menarik">
-      <h2>Tips Membuat PPT Menarik tentang Persamaan Kuadrat</h2>
-      <ul>
-        <li>Gunakan warna cerah dan font yang mudah dibaca.</li>
-        <li>Tambahkan grafik parabola dan animasi langkah penyelesaian.</li>
-        <li>Sisipkan contoh soal dan pembahasan secara interaktif.</li>
-        <li>Gunakan ilustrasi doodle agar sesuai tema.</li>
-      </ul>
-      <p>Gunakan <a href="https://slides.google.com" target="_blank" rel="noopener noreferrer">Google Slides</a> atau <a href="https://www.canva.com/presentations/templates/" target="_blank" rel="noopener noreferrer">Canva</a> untuk membuatnya.</p>
+    <section>
+      <div class="badge-img" title="PPT Menarik">
+        <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
+      </div>
+      <div class="content">
+        <h2>Tips Membuat PPT Menarik tentang Persamaan Kuadrat</h2>
+        <ul>
+          <li>Gunakan warna cerah dan font yang mudah dibaca.</li>
+          <li>Tambahkan grafik parabola dan animasi langkah penyelesaian.</li>
+          <li>Sisipkan contoh soal dan pembahasan secara interaktif.</li>
+          <li>Gunakan ilustrasi doodle agar sesuai tema.</li>
+        </ul>
+        <p>Gunakan <a href="https://slides.google.com" target="_blank" rel="noopener noreferrer">Google Slides</a> atau <a href="https://www.canva.com/presentations/templates/" target="_blank" rel="noopener noreferrer">Canva</a> untuk membuatnya.</p>
+      </div>
     </section>
 
-    <section data-badge="E-Book">
-      <h2>E-Book tentang Persamaan Kuadrat</h2>
-      <p>E-book dapat berisi:</p>
-      <ul>
-        <li>Pengertian dan sejarah persamaan kuadrat.</li>
-        <li>Metode penyelesaian lengkap (faktorisasi, rumus kuadrat, melengkapi kuadrat).</li>
-        <li>Contoh soal dan pembahasan.</li>
-        <li>Aplikasi persamaan kuadrat dalam kehidupan nyata.</li>
-        <li>Latihan soal dan kuis interaktif.</li>
-      </ul>
-      <p>Buat dengan <a href="https://docs.google.com/document" target="_blank" rel="noopener noreferrer">Google Docs</a> atau <a href="https://www.microsoft.com/en-us/microsoft-365/word" target="_blank" rel="noopener noreferrer">Microsoft Word</a>, lalu simpan sebagai PDF.</p>
+    <section>
+      <div class="badge-img" title="E-Book">
+        <img src="https://img.icons8.com/fluency/48/000000/ebook.png" alt="E-Book Badge" />
+      </div>
+      <div class="content">
+        <h2>E-Book tentang Persamaan Kuadrat</h2>
+        <p>E-book dapat berisi:</p>
+        <ul>
+          <li>Pengertian dan sejarah persamaan kuadrat.</li>
+          <li>Metode penyelesaian lengkap (faktorisasi, rumus kuadrat, melengkapi kuadrat).</li>
+          <li>Contoh soal dan pembahasan.</li>
+          <li>Aplikasi persamaan kuadrat dalam kehidupan nyata.</li>
+          <li>Latihan soal dan kuis interaktif.</li>
+        </ul>
+        <p>Buat dengan <a href="https://docs.google.com/document" target="_blank" rel="noopener noreferrer">Google Docs</a> atau <a href="https://www.microsoft.com/en-us/microsoft-365/word" target="_blank" rel="noopener noreferrer">Microsoft Word</a>, lalu simpan sebagai PDF.</p>
+      </div>
     </section>
 
-    <section data-badge="Video YouTube">
-      <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
-      <ul>
-        <li><a href="https://www.youtube.com/watch?v=cw05wO1rHko" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat - Pak Benni</a></li>
-        <li><a href="https://www.youtube.com/watch?v=PXqSO3hsCkc" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat SMP - Kejarcita</a></li>
-        <li><a href="https://www.youtube.com/watch?v=uo2J49DkbJs" target="_blank" rel="noopener noreferrer">Latihan Soal Persamaan Kuadrat - Mamas Guru</a></li>
-      </ul>
+    <section>
+      <div class="badge-img" title="Video YouTube">
+        <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="Video Badge" />
+      </div>
+      <div class="content">
+        <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
+        <ul>
+          <li><a href="https://www.youtube.com/watch?v=cw05wO1rHko" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat - Pak Benni</a></li>
+          <li><a href="https://www.youtube.com/watch?v=PXqSO3hsCkc" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat SMP - Kejarcita</a></li>
+          <li><a href="https://www.youtube.com/watch?v=uo2J49DkbJs" target="_blank" rel="noopener noreferrer">Latihan Soal Persamaan Kuadrat - Mamas Guru</a></li>
+        </ul>
+      </div>
     </section>
   </main>
 
@@ -283,5 +312,51 @@
       },
       {
         soal: `Selesaikan persamaan kuadrat $$2x^2 + 3x - 2 = 0$$`,
+        jawaban: `Gunakan rumus kuadrat:<br>$$x = \\frac{-b \\pm \\sqrt{b^2 - 4ac}}{2a}$$<br>Dengan $$a=2$$, $$b=3$$, $$c=-2$$, maka:<br>$$x = \\frac{-3 \\pm \\sqrt{9 + 16}}{4} = \\frac{-3 \\pm 5}{4}$$<br>Jadi $$x = 0.5$$ atau $$x = -2$$.`
+      },
+      {
+        soal: `Jika $$x^2 + 6x + 9 = 0$$, berapakah akar-akarnya?`,
+        jawaban: `Persamaan ini dapat difaktorkan menjadi $$(x + 3)^2 = 0$$<br>Sehingga akar kembar adalah $$x = -3$$.`
+      },
+      {
+        soal: `Tentukan akar-akar dari $$3x^2 - 12 = 0$$`,
+        jawaban: `Pindahkan konstanta: $$3x^2 = 12$$<br>$$x^2 = 4$$<br>Maka akar-akarnya adalah $$x = 2$$ dan $$x = -2$$.`
+      },
+      {
+        soal: `Selesaikan persamaan kuadrat $$x^2 - 7x + 12 = 0$$`,
+        jawaban: `Faktorkan: $$(x - 3)(x - 4) = 0$$<br>Jadi akar-akarnya adalah $$x = 3$$ dan $$x = 4$$.`
+      }
+    ];
 
-        
+    async function gantiSoal() {
+      const idx = Math.floor(Math.random() * latihanSoal.length);
+      const soalEl = document.getElementById('soal-dinamis');
+      const jawabanEl = document.getElementById('jawaban-dinamis');
+
+      soalEl.innerHTML = latihanSoal[idx].soal;
+      jawabanEl.innerHTML = latihanSoal[idx].jawaban;
+
+      if (window.MathJax && MathJax.typesetPromise) {
+        try {
+          await MathJax.typesetPromise();
+        } catch (err) {
+          console.error('MathJax rendering error:', err);
+        }
+      }
+    }
+
+    window.onload = () => {
+      if (window.MathJax && MathJax.startup && MathJax.startup.promise) {
+        MathJax.startup.promise.then(() => {
+          gantiSoal();
+        }).catch((err) => {
+          console.error('MathJax startup error:', err);
+          gantiSoal();
+        });
+      } else {
+        gantiSoal();
+      }
+    };
+  </script>
+</body>
+</html>
