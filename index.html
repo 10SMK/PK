@@ -2,16 +2,27 @@
 <html lang="id">
 <head>
   <meta charset="UTF-8" />
-  <title>Persamaan Kuadrat - Tema Doodle</title>
+  <title>Persamaan Kuadrat</title>
+  <!-- Google Fonts for doodle casual style -->
+  <link href="https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Comic+Sans+MS&display=swap" rel="stylesheet" />
+  <!-- MathJax for rendering equations -->
+  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+  <script id="MathJax-script" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
   <style>
-    /* Palet warna dari banner: putih, biru muda, hijau doodle */
-    @import url('https://fonts.googleapis.com/css2?family=Comic+Neue:wght@700&family=Comic+Sans+MS&display=swap');
-
+    /* Background doodle pattern from SVG base64 (simple hand-drawn circles) */
     body {
       margin: 0;
-      padding: 0 20px 40px 20px;
-      background: linear-gradient(135deg, #d9f0ff 0%, #e6f7e6 100%);
+      padding: 0 20px 60px 20px;
       font-family: 'Comic Neue', 'Comic Sans MS', cursive, sans-serif;
+      background-color: #e6f7e6;
+      background-image:
+        radial-gradient(circle at 10% 20%, #a6d785 2px, transparent 3px),
+        radial-gradient(circle at 80% 40%, #8bc34a 3px, transparent 4px),
+        radial-gradient(circle at 50% 80%, #c5e1a5 2px, transparent 3px);
+      background-repeat: repeat;
+      background-size: 100px 100px;
       color: #2c3e50;
       min-height: 100vh;
       display: flex;
@@ -21,52 +32,104 @@
 
     header {
       width: 100%;
-      max-width: 1280px;
+      max-width: 900px;
+      background: #fff;
+      border-radius: 20px 20px 0 0;
+      padding: 25px 20px;
+      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
       text-align: center;
-      padding: 20px 0 10px 0;
-      background-color: #ffffffcc; /* putih transparan */
-      border-radius: 0 0 20px 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      margin-top: 30px;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 10;
     }
-
-    header img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 15px;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.15);
-      margin-bottom: 15px;
-      user-select: none;
-    }
-
     header h1 {
-      font-size: 3rem;
       margin: 0;
-      color: #2a64d6; /* biru cerah */
-      text-shadow: 1px 1px 2px #a0c4ff;
+      font-size: 3rem;
+      color: #2a64d6;
+      text-shadow: 1px 1px 3px #a0c4ff;
+      user-select: none;
     }
 
     main {
       max-width: 900px;
-      background: #ffffffdd;
+      background: #fffdf9;
+      border-radius: 0 0 20px 20px;
+      padding: 30px 40px 40px 40px;
+      box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-bottom: 60px;
+    }
+
+    section {
+      position: relative;
+      margin-bottom: 50px;
+      padding-left: 60px;
+      border-left: 5px solid #8bc34a;
+      background: #f9fff4;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(139,195,74,0.15);
+    }
+
+    /* Badge style */
+    section::before {
+      content: attr(data-badge);
+      position: absolute;
+      left: 10px;
+      top: 20px;
+      background: #8bc34a;
+      color: white;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 14px;
       border-radius: 20px;
-      padding: 30px 40px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
-      margin-top: 30px;
-      line-height: 1.6;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+      user-select: none;
+      font-family: 'Comic Neue', cursive;
     }
 
     h2 {
-      color: #27ae60; /* hijau doodle */
-      border-bottom: 3px solid #27ae60;
-      padding-bottom: 6px;
-      margin-top: 40px;
+      color: #558b2f;
+      margin-top: 0;
+      margin-bottom: 15px;
+      font-size: 1.9rem;
+      user-select: none;
+    }
+
+    p, ul, li {
+      font-size: 1.1rem;
+      line-height: 1.6;
+      color: #3a4a2a;
+    }
+
+    ul {
+      margin-left: 20px;
+    }
+
+    code {
+      background: #e0f2f1;
+      padding: 2px 6px;
+      border-radius: 5px;
+      font-family: Consolas, monospace;
+      font-weight: 600;
+    }
+
+    details {
+      background: #dcedc8;
+      padding: 12px 18px;
+      border-radius: 10px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 1.1rem;
+      color: #33691e;
+    }
+
+    details summary {
+      font-weight: 700;
+      user-select: none;
     }
 
     a {
-      color: #2a64d6;
+      color: #558b2f;
       font-weight: 700;
       text-decoration: none;
     }
@@ -74,73 +137,137 @@
       text-decoration: underline;
     }
 
-    footer {
-      margin-top: auto;
-      padding: 15px 0;
-      width: 100%;
-      max-width: 1280px;
-      text-align: center;
-      font-size: 0.9rem;
-      color: #555;
+    button {
+      background-color: #8bc34a;
+      border: none;
+      padding: 12px 22px;
+      border-radius: 30px;
+      color: white;
+      font-size: 1.1rem;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(139,195,74,0.6);
+      transition: background-color 0.3s ease;
       user-select: none;
+      margin-top: 15px;
+    }
+    button:hover {
+      background-color: #7cb342;
+    }
+
+    footer {
+      text-align: center;
+      font-size: 1rem;
+      color: #4a6a2a;
+      margin-bottom: 20px;
+      user-select: none;
+      font-weight: 600;
     }
 
     /* Responsive */
     @media (max-width: 600px) {
       header h1 {
-        font-size: 2rem;
+        font-size: 2.2rem;
       }
       main {
         padding: 20px;
-        margin-top: 20px;
+      }
+      section {
+        padding-left: 45px;
+      }
+      section::before {
+        top: 15px;
+        left: 5px;
+        padding: 5px 12px;
+        font-size: 0.8rem;
+      }
+      button {
+        width: 100%;
+        font-size: 1rem;
       }
     }
   </style>
 </head>
 <body>
   <header>
-    <!-- Ganti src sesuai lokasi gambar banner Anda -->
-    <img src="./Teacher's%20Classroom%20Poster%20in%20White%20Blue%20and%20Green%20Doodle%20Style%20(1280%20x%20640%20px).png" alt="Teacher's Classroom Poster" />
     <h1>Persamaan Kuadrat</h1>
   </header>
 
   <main>
-    <section>
+    <section data-badge="Pengertian">
       <h2>Pengertian Persamaan Kuadrat</h2>
       <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
-      <p style="text-align:center; font-size:1.3rem; font-weight: 700;">
+      <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
         $$ ax^2 + bx + c = 0 $$
       </p>
       <ul>
         <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan <code>a \neq 0</code>.</li>
         <li><b>x</b> adalah variabel yang dicari nilainya.</li>
       </ul>
-      <p>Persamaan kuadrat banyak digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+      <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
     </section>
 
-    <section>
-      <h2>Contoh Soal</h2>
+    <section data-badge="Contoh Soal">
+      <h2>Contoh Soal Persamaan Kuadrat</h2>
       <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
-      <p style="text-align:center; font-size:1.2rem;">
+      <p style="text-align:center; font-size:1.3rem;">
         $$ x^2 - 5x + 6 = 0 $$
       </p>
       <details>
-        <summary><b>Penjelasan dan Jawaban</b></summary>
+        <summary>Penjelasan dan Jawaban</summary>
         <p>Kita faktorkan persamaan tersebut:</p>
-        <p style="text-align:center; font-size:1.2rem;">
+        <p style="text-align:center; font-size:1.3rem;">
           $$ (x - 2)(x - 3) = 0 $$
         </p>
         <p>Maka, akar-akarnya adalah:</p>
-        <p style="text-align:center; font-size:1.2rem;">
+        <p style="text-align:center; font-size:1.3rem;">
           $$ x = 2 \quad \text{atau} \quad x = 3 $$
         </p>
       </details>
     </section>
 
-    <section>
-      <h2>Latihan Soal</h2>
-      <p>Soal dan pembahasan akan ditampilkan secara dinamis pada halaman ini.</p>
-      <!-- Bisa ditambahkan script latihan soal dinamis di sini -->
+    <section data-badge="Latihan Soal Dinamis">
+      <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
+      <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya".</p>
+      <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
+      <details style="margin-top:10px;">
+        <summary>Penjelasan Jawaban</summary>
+        <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
+      </details>
+      <button onclick="gantiSoal()">Soal Lainnya</button>
+    </section>
+
+    <section data-badge="PPT Menarik">
+      <h2>Tips Membuat PPT Menarik tentang Persamaan Kuadrat</h2>
+      <ul>
+        <li>Gunakan warna cerah dan font yang mudah dibaca.</li>
+        <li>Tambahkan grafik parabola dan animasi langkah penyelesaian.</li>
+        <li>Sisipkan contoh soal dan pembahasan secara interaktif.</li>
+        <li>Gunakan ilustrasi doodle agar sesuai tema.</li>
+      </ul>
+      <p>Gunakan <a href="https://slides.google.com" target="_blank" rel="noopener noreferrer">Google Slides</a> atau <a href="https://www.canva.com/presentations/templates/" target="_blank" rel="noopener noreferrer">Canva</a> untuk membuatnya.</p>
+    </section>
+
+    <section data-badge="E-Book">
+      <h2>E-Book tentang Persamaan Kuadrat</h2>
+      <p>E-book dapat berisi:</p>
+      <ul>
+        <li>Pengertian dan sejarah persamaan kuadrat.</li>
+        <li>Metode penyelesaian lengkap (faktorisasi, rumus kuadrat, melengkapi kuadrat).</li>
+        <li>Contoh soal dan pembahasan.</li>
+        <li>Aplikasi persamaan kuadrat dalam kehidupan nyata.</li>
+        <li>Latihan soal dan kuis interaktif.</li>
+      </ul>
+      <p>Buat dengan <a href="https://docs.google.com/document" target="_blank" rel="noopener noreferrer">Google Docs</a> atau <a href="https://www.microsoft.com/en-us/microsoft-365/word" target="_blank" rel="noopener noreferrer">Microsoft Word</a>, lalu simpan sebagai PDF.</p>
+    </section>
+
+    <section data-badge="Video YouTube">
+      <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
+      <ul>
+        <li><a href="https://www.youtube.com/watch?v=cw05wO1rHko" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat - Pak Benni</a></li>
+        <li><a href="https://www.youtube.com/watch?v=PXqSO3hsCkc" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat SMP - Kejarcita</a></li>
+        <li><a href="https://www.youtube.com/watch?v=uo2J49DkbJs" target="_blank" rel="noopener noreferrer">Latihan Soal Persamaan Kuadrat - Mamas Guru</a></li>
+      </ul>
     </section>
   </main>
 
@@ -148,10 +275,13 @@
     &copy; 2025 10 SMK
   </footer>
 
-  <!-- MathJax untuk render persamaan matematika -->
-  <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
-  <script id="MathJax-script" async
-    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
-  </script>
-</body>
-</html>
+  <script>
+    const latihanSoal = [
+      {
+        soal: `Tentukan akar-akar dari persamaan kuadrat $$x^2 - 4x - 5 = 0$$`,
+        jawaban: `Faktorkan persamaan: $$x^2 - 4x - 5 = (x - 5)(x + 1) = 0$$<br>Sehingga akar-akarnya adalah $$x = 5$$ dan $$x = -1$$.`
+      },
+      {
+        soal: `Selesaikan persamaan kuadrat $$2x^2 + 3x - 2 = 0$$`,
+
+        
