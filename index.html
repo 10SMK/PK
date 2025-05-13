@@ -275,7 +275,7 @@
       </div>
     </section>
      <section>
-     <div class="badge-img" title="Latihan Soal Dinamis">
+    <div class="badge-img" title="Latihan Soal Dinamis">
   <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
 </div>
 <div class="content">
@@ -283,7 +283,6 @@
   <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
   <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
   <form id="pilihan-jawaban" style="margin-top:15px;"></form>
-  <button type="button" onclick="cekJawaban()">Cek Jawaban</button>
   <details style="margin-top:10px;">
     <summary>Penjelasan Jawaban</summary>
     <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
@@ -339,30 +338,28 @@ function tampilkanSoal() {
 
   // Reset penjelasan
   document.getElementById("jawaban-dinamis").innerText = "";
-}
 
-function cekJawaban() {
+  // Tambahkan event listener pada radio button agar langsung tampilkan penjelasan saat dipilih
   const radios = document.getElementsByName("jawaban");
-  let jawabanDipilih = -1;
-  for (let i = 0; i < radios.length; i++) {
-    if (radios[i].checked) {
-      jawabanDipilih = parseInt(radios[i].value);
-      break;
-    }
-  }
-  if (jawabanDipilih === -1) {
-    alert("Silakan pilih jawaban terlebih dahulu.");
-    return;
-  }
+  radios.forEach(radio => {
+    radio.addEventListener("change", function() {
+      const jawabanDipilih = parseInt(this.value);
+      const soalObj = daftarSoal[indeksSoal];
+      let hasil = "";
+      if (jawabanDipilih === soalObj.jawabanBenar) {
+        hasil = "✅ Jawaban Anda benar!";
+      } else {
+        hasil = "❌ Jawaban Anda kurang tepat.";
+      }
+      document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
 
-  const soalObj = daftarSoal[indeksSoal];
-  let hasil = "";
-  if (jawabanDipilih === soalObj.jawabanBenar) {
-    hasil = "✅ Jawaban Anda benar!";
-  } else {
-    hasil = "❌ Jawaban Anda kurang tepat.";
-  }
-  document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
+      // Buka details secara otomatis
+      const details = document.querySelector("details");
+      if (!details.open) {
+        details.open = true;
+      }
+    });
+  });
 }
 
 function gantiSoal() {
@@ -372,6 +369,7 @@ function gantiSoal() {
 
 tampilkanSoal();
 </script>
+
 
     <section>
       <div class="badge-img" title="PPT Menarik">
