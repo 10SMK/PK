@@ -275,20 +275,21 @@
       </div>
     </section>
      <section>
-    <div class="badge-img" title="Latihan Soal Dinamis">
-  <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
-</div>
-<div class="content">
-  <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
-  <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
-  <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none;"></div>
-  <form id="pilihan-jawaban" style="margin-top:15px;"></form>
-  <details style="margin-top:10px;">
-    <summary>Penjelasan Jawaban</summary>
-    <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
-  </details>
-  <button type="button" onclick="gantiSoal()">Soal Lainnya</button>
-</div>
+  <div class="badge-img" title="Latihan Soal Dinamis">
+    <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+  </div>
+  <div class="content">
+    <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
+    <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
+    <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height: 90px; user-select:none; margin-bottom:15px;"></div>
+    <form id="pilihan-jawaban" style="margin-top:10px;"></form>
+    <details style="margin-top:10px;">
+      <summary>Penjelasan Jawaban</summary>
+      <div id="jawaban-dinamis" style="margin-top:8px; font-size:1.1rem; line-height:1.4; user-select:none;"></div>
+    </details>
+    <button type="button" onclick="gantiSoal()">Soal Lainnya</button>
+  </div>
+</section>
 
 <script>
 const daftarSoal = [
@@ -313,6 +314,17 @@ const daftarSoal = [
     ],
     jawabanBenar: 0,
     penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
+  },
+  {
+    soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
+    pilihan: [
+      "x = 3 dan x = 4",
+      "x = -3 dan x = -4",
+      "x = 2 dan x = 6",
+      "x = -2 dan x = -6"
+    ],
+    jawabanBenar: 0,
+    penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
   }
   // Tambahkan soal lain sesuai kebutuhan
 ];
@@ -324,14 +336,15 @@ function tampilkanSoal() {
   document.getElementById("soal-dinamis").innerText = soalObj.soal;
 
   const formPilihan = document.getElementById("pilihan-jawaban");
-  formPilihan.innerHTML = ""; // Bersihkan pilihan sebelumnya
+  formPilihan.innerHTML = "";
 
   soalObj.pilihan.forEach((pilihan, idx) => {
     const label = document.createElement("label");
     label.style.display = "block";
     label.style.marginBottom = "6px";
+    label.style.cursor = "pointer";
     label.innerHTML = `
-      <input type="radio" name="jawaban" value="${idx}" /> ${pilihan}
+      <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;"/> ${pilihan}
     `;
     formPilihan.appendChild(label);
   });
@@ -339,12 +352,11 @@ function tampilkanSoal() {
   // Reset penjelasan
   document.getElementById("jawaban-dinamis").innerText = "";
 
-  // Tambahkan event listener pada radio button agar langsung tampilkan penjelasan saat dipilih
+  // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
   const radios = document.getElementsByName("jawaban");
   radios.forEach(radio => {
     radio.addEventListener("change", function() {
       const jawabanDipilih = parseInt(this.value);
-      const soalObj = daftarSoal[indeksSoal];
       let hasil = "";
       if (jawabanDipilih === soalObj.jawabanBenar) {
         hasil = "✅ Jawaban Anda benar!";
@@ -353,8 +365,8 @@ function tampilkanSoal() {
       }
       document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
 
-      // Buka details secara otomatis
-      const details = document.querySelector("details");
+      // Buka details otomatis
+      const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
       if (!details.open) {
         details.open = true;
       }
@@ -367,9 +379,9 @@ function gantiSoal() {
   tampilkanSoal();
 }
 
+// Tampilkan soal pertama saat halaman dimuat
 tampilkanSoal();
 </script>
-
 
     <section>
       <div class="badge-img" title="PPT Menarik">
