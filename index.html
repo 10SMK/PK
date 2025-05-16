@@ -234,6 +234,52 @@
         font-size: 1.1rem;
       }
     }
+
+    /* Tombol fixed dinamis */
+    #buttonContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 9999;
+    }
+    #buttonContainer.hide {
+      opacity: 0;
+      transform: translateY(100px);
+      pointer-events: none;
+    }
+    #buttonContainer button {
+      background-color: #2a64d6;
+      border: none;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(42,100,214,0.4);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #buttonContainer button:hover {
+      background-color: #1948a3;
+    }
+    @media (max-width: 600px) {
+      #buttonContainer {
+        flex-direction: row;
+        bottom: 10px;
+        right: 10px;
+      }
+      #buttonContainer button {
+        padding: 12px 18px;
+        font-size: 14px;
+      }
+    }
   </style>
 </head>
 <body>
@@ -243,7 +289,56 @@
     <button class="btn-LKPD" onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
   </header>
   <main>
-    <!-- ... Bagian lain tetap ... -->
+
+    <!-- Bagian materi yang hilang dikembalikan di bawah ini -->
+    <section>
+      <div class="badge-img" title="Pengertian">
+        <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
+      </div>
+      <div class="content">
+        <h2>Pengertian Persamaan Kuadrat</h2>
+        <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
+        <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
+          $$ ax^2 + bx + c = 0 $$
+        </p>
+        <ul>
+          <li><b>a</b>, <b>b</b>, dan <b>c</b> adalah konstanta dengan \( a \neq 0 \).</li>
+          <li><b>x</b> adalah variabel yang dicari nilainya.</li>
+        </ul>
+        <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
+      </div>
+    </section>
+
+    <div class="indent-block">
+      <h2 style="margin-top:0;">Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
+      <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - x_1)(x - x_2) = 0 $$
+      </p>
+      <p>Contoh:</p>
+      <p>Tentukan persamaan kuadrat dengan akar-akar 2 dan 3:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ (x - 2)(x - 3) = 0 $$
+      </p>
+      <p>Jika dikembangkan:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 5x + 6 = 0 $$
+      </p>
+
+      <h2>Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar</h2>
+      <p>Jika yang diketahui pada soal hanya jumlah dan hasil kali akar-akarnya, Sobat Pintar bisa menggunakan rumus:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - (x_1 + x_2)x + x_1 x_2 = 0 $$
+      </p>
+      <p>Contoh soal:</p>
+      <p><b>Tentukan persamaan kuadrat yang akar-akarnya jumlahnya 7 dan hasil kalinya 12!</b></p>
+      <p><b>Penyelesaian:</b></p>
+      <p>Persamaan kuadratnya:</p>
+      <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
+        $$ x^2 - 7x + 12 = 0 $$
+      </p>
+    </div>
+    <!-- Sampai sini bagian materi sebelum latihan soal -->
 
     <!-- Latihan Soal Dinamis, badge tampil rapi -->
     <section>
@@ -262,96 +357,95 @@
         <button type="button" onclick="gantiSoal()">Soal Lainnya</button>
       </div>
     </section>
-
     <script>
-    const daftarSoal = [
-      {
-        soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
-        pilihan: [
-          "x = 2 dan x = 3",
-          "x = -2 dan x = -3",
-          "x = 1 dan x = 6",
-          "x = -1 dan x = -6"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "Persamaan x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3) = 0, sehingga x = 2 atau x = 3."
-      },
-      {
-        soal: "Akar-akar dari persamaan x² + 4x + 3 = 0 adalah ...",
-        pilihan: [
-          "x = -1 dan x = -3",
-          "x = 1 dan x = 3",
-          "x = -4 dan x = -3",
-          "x = 4 dan x = 3"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
-      },
-      {
-        soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
-        pilihan: [
-          "x = 3 dan x = 4",
-          "x = -3 dan x = -4",
-          "x = 2 dan x = 6",
-          "x = -2 dan x = -6"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
-      }
-    ];
+      const daftarSoal = [
+        {
+          soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 2 dan x = 3",
+            "x = -2 dan x = -3",
+            "x = 1 dan x = 6",
+            "x = -1 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Persamaan x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3) = 0, sehingga x = 2 atau x = 3."
+        },
+        {
+          soal: "Akar-akar dari persamaan x² + 4x + 3 = 0 adalah ...",
+          pilihan: [
+            "x = -1 dan x = -3",
+            "x = 1 dan x = 3",
+            "x = -4 dan x = -3",
+            "x = 4 dan x = 3"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
+        },
+        {
+          soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 3 dan x = 4",
+            "x = -3 dan x = -4",
+            "x = 2 dan x = 6",
+            "x = -2 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
+        }
+      ];
 
-    let indeksSoal = 0;
+      let indeksSoal = 0;
 
-    function tampilkanSoal() {
-      const soalObj = daftarSoal[indeksSoal];
-      document.getElementById("soal-dinamis").innerText = soalObj.soal;
+      function tampilkanSoal() {
+        const soalObj = daftarSoal[indeksSoal];
+        document.getElementById("soal-dinamis").innerText = soalObj.soal;
 
-      const formPilihan = document.getElementById("pilihan-jawaban");
-      formPilihan.innerHTML = "";
+        const formPilihan = document.getElementById("pilihan-jawaban");
+        formPilihan.innerHTML = "";
 
-      soalObj.pilihan.forEach((pilihan, idx) => {
-        const label = document.createElement("label");
-        label.style.display = "block";
-        label.style.marginBottom = "6px";
-        label.style.cursor = "pointer";
-        label.innerHTML = `
-          <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;" /> ${pilihan}
-        `;
-        formPilihan.appendChild(label);
-      });
-
-      // Reset penjelasan
-      document.getElementById("jawaban-dinamis").innerText = "";
-
-      // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
-      const radios = document.getElementsByName("jawaban");
-      radios.forEach(radio => {
-        radio.addEventListener("change", function() {
-          const jawabanDipilih = parseInt(this.value);
-          let hasil = "";
-          if (jawabanDipilih === soalObj.jawabanBenar) {
-            hasil = "✅ Jawaban Anda benar!";
-          } else {
-            hasil = "❌ Jawaban Anda kurang tepat.";
-          }
-          document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
-
-          // Buka details otomatis
-          const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
-          if (!details.open) {
-            details.open = true;
-          }
+        soalObj.pilihan.forEach((pilihan, idx) => {
+          const label = document.createElement("label");
+          label.style.display = "block";
+          label.style.marginBottom = "6px";
+          label.style.cursor = "pointer";
+          label.innerHTML = `
+            <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;" /> ${pilihan}
+          `;
+          formPilihan.appendChild(label);
         });
-      });
-    }
 
-    function gantiSoal() {
-      indeksSoal = (indeksSoal + 1) % daftarSoal.length;
+        // Reset penjelasan
+        document.getElementById("jawaban-dinamis").innerText = "";
+
+        // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
+        const radios = document.getElementsByName("jawaban");
+        radios.forEach(radio => {
+          radio.addEventListener("change", function() {
+            const jawabanDipilih = parseInt(this.value);
+            let hasil = "";
+            if (jawabanDipilih === soalObj.jawabanBenar) {
+              hasil = "✅ Jawaban Anda benar!";
+            } else {
+              hasil = "❌ Jawaban Anda kurang tepat.";
+            }
+            document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
+
+            // Buka details otomatis
+            const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
+            if (!details.open) {
+              details.open = true;
+            }
+          });
+        });
+      }
+
+      function gantiSoal() {
+        indeksSoal = (indeksSoal + 1) % daftarSoal.length;
+        tampilkanSoal();
+      }
+
+      // Tampilkan soal pertama saat halaman dimuat
       tampilkanSoal();
-    }
-
-    // Tampilkan soal pertama saat halaman dimuat
-    tampilkanSoal();
     </script>
 
     <section>
@@ -370,8 +464,30 @@
     </section>
     <!-- ... Bagian lain tetap ... -->
   </main>
+
+  <!-- Tombol dinamis di pojok kanan bawah -->
+  <div id="buttonContainer">
+    <button onclick="window.location.href='profile.html'">Lihat Profil</button>
+    <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+  </div>
   <footer>
     &copy; 2025 10 SMK
   </footer>
+  <script>
+    // Tombol dinamis: sembunyikan saat scroll ke bawah, tampilkan saat scroll ke atas
+    let lastScrollTop = 0;
+    const buttonContainer = document.getElementById('buttonContainer');
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // Scroll ke bawah, sembunyikan tombol
+        buttonContainer.classList.add('hide');
+      } else {
+        // Scroll ke atas, tampilkan tombol
+        buttonContainer.classList.remove('hide');
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+  </script>
 </body>
 </html>
