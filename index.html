@@ -51,8 +51,7 @@
       user-select: none;
     }
 
-    /* Tombol profil responsif */
-    .btn-profile {
+    .btn-profile, .btn-LKPD {
       background-color: #8bc34a;
       border: none;
       padding: 12px 22px;
@@ -67,8 +66,9 @@
       margin-top: 18px;
       margin-bottom: 5px;
       display: inline-block;
+      margin-left: 8px;
     }
-    .btn-profile:hover {
+    .btn-profile:hover, .btn-LKPD:hover {
       background-color: #7cb342;
     }
 
@@ -79,6 +79,7 @@
       padding: 30px 40px 40px 40px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
       margin-bottom: 60px;
+      width: 100%;
     }
 
     section {
@@ -90,21 +91,28 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(139,195,74,0.15);
       position: relative;
+      gap: 18px;
     }
 
     .badge-img {
       flex-shrink: 0;
-      width: 48px;
-      height: 48px;
-      margin-right: 18px;
+      width: 56px;
+      height: 56px;
       user-select: none;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #fff;
+      border-radius: 16px;
+      box-shadow: 0 2px 8px rgba(139,195,74,0.25);
+      margin-right: 0;
     }
     .badge-img img {
-      width: 100%;
-      height: 100%;
+      width: 40px;
+      height: 40px;
       object-fit: contain;
       border-radius: 12px;
-      box-shadow: 0 2px 8px rgba(139,195,74,0.4);
+      display: block;
     }
 
     section > div.content {
@@ -207,11 +215,12 @@
       section {
         flex-direction: column;
         padding-left: 0;
+        gap: 12px;
       }
       .badge-img {
         margin: 0 0 12px 0;
-        width: 40px;
-        height: 40px;
+        width: 48px;
+        height: 48px;
       }
       .indent-block {
         margin-left: 10px;
@@ -220,10 +229,56 @@
       h2 {
         font-size: 1.3rem;
       }
-      button, .btn-profile {
+      button, .btn-profile, .btn-LKPD {
         width: 100%;
         padding: 12px 0;
         font-size: 1.1rem;
+      }
+    }
+
+    /* Tombol fixed dinamis */
+    #buttonContainer {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      opacity: 1;
+      transform: translateY(0);
+      z-index: 9999;
+    }
+    #buttonContainer.hide {
+      opacity: 0;
+      transform: translateY(100px);
+      pointer-events: none;
+    }
+    #buttonContainer button {
+      background-color: #2a64d6;
+      border: none;
+      color: white;
+      padding: 14px 24px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      box-shadow: 0 5px 15px rgba(42,100,214,0.4);
+      user-select: none;
+      transition: background-color 0.3s ease;
+    }
+    #buttonContainer button:hover {
+      background-color: #1948a3;
+    }
+    @media (max-width: 600px) {
+      #buttonContainer {
+        flex-direction: row;
+        bottom: 10px;
+        right: 10px;
+      }
+      #buttonContainer button {
+        padding: 12px 18px;
+        font-size: 14px;
       }
     }
   </style>
@@ -235,8 +290,7 @@
     <button class="btn-LKPD" onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
   </header>
   <main>
-    <!-- ... seluruh isi <main> tetap seperti file Anda ... -->
-    <!-- (Potongan kode main Anda tidak diubah, silakan gunakan seperti pada file Anda) -->
+    <!-- Pengertian Persamaan Kuadrat -->
     <section>
       <div class="badge-img" title="Pengertian">
         <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
@@ -285,6 +339,7 @@
       </p>
     </div>
 
+    <!-- Contoh Soal -->
     <section>
       <div class="badge-img" title="Contoh Soal">
         <img src="https://img.icons8.com/fluency/48/000000/test-passed.png" alt="Contoh Soal Badge" />
@@ -308,11 +363,12 @@
         </details>
       </div>
     </section>
-    
-    <!-- Latihan Soal Dinamis, mobile-friendly -->
+
+    <!-- Latihan Soal Dinamis -->
     <section>
       <div class="badge-img" title="Latihan Soal Dinamis">
-        <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+        <!-- Ganti badge dengan ikon yang lebih jelas -->
+        <img src="https://img.icons8.com/color/48/000000/question-mark.png" alt="Latihan Soal Badge" />
       </div>
       <div class="content">
         <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
@@ -326,7 +382,53 @@
         <button type="button" onclick="gantiSoal()">Soal Lainnya</button>
       </div>
     </section>
-    <script>
+
+    <!-- E-Book -->
+    <section>
+      <div class="badge-img" title="E-Book">
+        <!-- Ganti badge dengan ikon yang lebih jelas -->
+        <img src="https://img.icons8.com/color/48/000000/open-book--v1.png" alt="E-Book Badge" />
+      </div>
+      <div class="content">
+        <h2>E-Book tentang Persamaan Kuadrat</h2>
+        <p>
+          Anda dapat membaca e-book interaktif pada link berikut:<br>
+          <a href="https://read.bookcreator.com/gmMw3KPcHwV3kZRbPssV4YL4pH13/h3QEMQljSSW0JxVl5ql7hw" target="_blank" rel="noopener noreferrer">
+            📖 Baca E-Book Interaktif Persamaan Kuadrat
+          </a>
+        </p>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- Tombol dinamis di pojok kanan bawah -->
+  <div id="buttonContainer">
+    <button onclick="window.location.href='profile.html'">Lihat Profil</button>
+    <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+  </div>
+
+  <footer>
+    &copy; 2025 10 SMK
+  </footer>
+
+  <script>
+    // Tombol dinamis: sembunyikan saat scroll ke bawah, tampilkan saat scroll ke atas
+    let lastScrollTop = 0;
+    const buttonContainer = document.getElementById('buttonContainer');
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      if (scrollTop > lastScrollTop && scrollTop > 50) {
+        // Scroll ke bawah, sembunyikan tombol
+        buttonContainer.classList.add('hide');
+      } else {
+        // Scroll ke atas, tampilkan tombol
+        buttonContainer.classList.remove('hide');
+      }
+      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
+    }, false);
+
+    // Daftar soal dan fungsi latihan soal dinamis
     const daftarSoal = [
       {
         soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
@@ -415,67 +517,6 @@
 
     // Tampilkan soal pertama saat halaman dimuat
     tampilkanSoal();
-    </script>
-
-    <section>
-      <div class="badge-img" title="PPT Menarik">
-        <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
-      </div>
-      <div class="content">
-        <h2>PPT tentang Persamaan Kuadrat</h2>
-        <ul>
-          <li><a href="https://slideplayer.info/slide/2297226/" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat 1</a></li>
-          <li><a href="https://slideplayer.info/slide/2297326/" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat 2</a></li>
-          <li><a href="https://slideplayer.info/slide/2714205/" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat 3</a></li>
-        </ul>
-      </div>
-    </section>
-
-    <section>
-      <div class="badge-img" title="E-Book">
-        <img src="https://img.icons8.com/fluency/48/000000/ebook.png" alt="E-Book Badge" />
-      </div>
-      <div class="content">
-        <h2>E-Book tentang Persamaan Kuadrat</h2>
-        <p>
-          Anda dapat membaca e-book interaktif pada link berikut:<br>
-          <a href="https://read.bookcreator.com/gmMw3KPcHwV3kZRbPssV4YL4pH13/h3QEMQljSSW0JxVl5ql7hw" target="_blank" rel="noopener noreferrer">
-            📖 Baca E-Book Interaktif Persamaan Kuadrat
-          </a>
-        </p>
-      </div>
-    </section>
-
-    <div class="indent-block">
-      <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
-      <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
-      <figure>
-        <img src="Pelangi.jpg" alt="Pelangi" style="max-width:100%; border-radius:12px;" />
-        <figcaption>Pelangi yang merupakan lengkungan cahaya warna-warni (Photo by Getty Images/iStockphoto/gui00878)</figcaption>
-      </figure>
-      <figure>
-        <img src="Tendangan bola.jpg" alt="Tendangan Bola" style="max-width:100%; border-radius:12px;" />
-        <figcaption>Gerakan tendangan bola membentuk lintasan parabola (Photo by wikihow.com)</figcaption>
-      </figure>
-    </div>
-    
-    <section>
-      <div class="badge-img" title="Video YouTube">
-        <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="Video Badge" />
-      </div>
-      <div class="content">
-        <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
-        <ul>
-          <li><a href="https://youtu.be/IwFQPIdqqqQ?si=PMgGxDA5i-TOPo1r" target="_blank" rel="noopener noreferrer">Funsi Kuadrat Bagian 1 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/IcQAjHTW5z8?si=Fj5gmRLbWTlrerz2" target="_blank" rel="noopener noreferrer">Fungsi kuadrat Bagian 2 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/73eawh1yOyU?si=Q2R1Y-fYAqckdnae" target="_blank" rel="noopener noreferrer">Fungsi Kuadrat Bagian 3 - m4th-lab</a></li>
-        </ul>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    &copy; 2025 10 SMK
-  </footer>
+  </script>
 </body>
 </html>
