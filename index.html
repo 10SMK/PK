@@ -12,7 +12,6 @@
   </script>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <style>
-    /* Default font for all devices */
     body {
       margin: 0;
       padding: 0 20px 60px 20px;
@@ -31,59 +30,47 @@
       align-items: center;
     }
 
-    /* Override font for Android devices */
-    @media screen and (max-width: 9999px) {
-      /* Using JavaScript detection is more reliable, but here CSS only */
-      /* This CSS hack targets Android Chrome browsers */
-      @supports (-webkit-overflow-scrolling: touch) {
-        body {
-          font-family: 'Times New Roman', sans-serif !important;
-        }
-      }
-    }
-
-    .header-container {
+    /* Header styling */
+    #headerContainer {
       width: 100%;
       max-width: 900px;
       background: #fff;
       border-radius: 20px 20px 0 0;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      margin-top: 30px;
-      position: sticky;
+      position: fixed;
       top: 0;
-      z-index: 20;
-      transition: opacity 0.3s, transform 0.3s;
-      text-align: center;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 1000;
+      transition: transform 0.3s ease, opacity 0.3s ease;
+      user-select: none;
     }
-    .header-container.hide {
+    #headerContainer.hidden {
+      transform: translateX(-50%) translateY(-100%);
       opacity: 0;
       pointer-events: none;
-      transform: translateY(-60px);
     }
-    .header-container h1 {
+    #headerContainer h1 {
       margin: 0;
       font-size: 2rem;
       color: #2a64d6;
       text-shadow: 1px 1px 3px #a0c4ff;
-      user-select: none;
-      padding: 25px 20px 0 20px;
-      transition: font-size 0.3s;
+      padding: 25px 20px 10px 20px;
+      text-align: center;
     }
 
-    /* Toolbar responsif */
-    .toolbar {
+    /* Navigation buttons below header */
+    #toolbar {
       display: flex;
       justify-content: center;
-      align-items: center;
       gap: 16px;
       background: #f4f4f4;
       border-radius: 0 0 18px 18px;
       box-shadow: 0 2px 8px rgba(139,195,74,0.08);
-      padding: 12px 0;
-      margin-top: 18px;
-      transition: opacity 0.3s, transform 0.3s;
+      padding: 12px 0 20px 0;
+      user-select: none;
     }
-    .toolbar button {
+    #toolbar button {
       background-color: #8bc34a;
       border: none;
       padding: 12px 22px;
@@ -94,9 +81,10 @@
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(139,195,74,0.3);
       transition: background-color 0.2s;
-      user-select: none;
+      flex: 1 1 auto;
+      max-width: 180px;
     }
-    .toolbar button:hover {
+    #toolbar button:hover {
       background-color: #7cb342;
     }
 
@@ -106,6 +94,7 @@
       border-radius: 0 0 20px 20px;
       padding: 30px 40px 40px 40px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+      margin-top: 140px; /* space for fixed header + toolbar */
       margin-bottom: 60px;
       width: 100%;
     }
@@ -127,7 +116,6 @@
       width: 48px;
       height: 48px;
       margin-right: 18px;
-      user-select: none;
     }
     .badge-img img {
       width: 100%;
@@ -146,7 +134,6 @@
       margin-top: 0;
       margin-bottom: 15px;
       font-size: 1.9rem;
-      user-select: none;
     }
 
     p, ul, li {
@@ -188,7 +175,6 @@
 
     details summary {
       font-weight: 700;
-      user-select: none;
     }
 
     a {
@@ -228,11 +214,18 @@
     }
 
     @media (max-width: 600px) {
-      .header-container h1 {
-        font-size: 1.7rem;
+      #toolbar {
+        flex-direction: column;
+        gap: 10px;
+        padding-bottom: 15px;
+      }
+      #toolbar button {
+        max-width: none;
+        width: 100%;
       }
       main {
         padding: 20px;
+        margin-top: 160px;
       }
       section {
         flex-direction: column;
@@ -250,7 +243,6 @@
       h2 {
         font-size: 1.3rem;
       }
-      .toolbar button,
       button {
         width: 100%;
         padding: 12px 0;
@@ -260,13 +252,14 @@
   </style>
 </head>
 <body>
-  <div class="header-container" id="headerContainer">
+  <div id="headerContainer">
     <h1>Persamaan Kuadrat</h1>
-    <nav class="toolbar" id="toolbar">
+    <nav id="toolbar">
       <button onclick="window.location.href='profile.html'">Lihat Profil</button>
       <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
     </nav>
   </div>
+
   <main>
     <section>
       <div class="badge-img" title="Pengertian">
@@ -394,7 +387,6 @@
       function tampilkanSoal() {
         const soalObj = daftarSoal[indeksSoal];
         document.getElementById("soal-dinamis").innerText = soalObj.soal;
-
         const formPilihan = document.getElementById("pilihan-jawaban");
         formPilihan.innerHTML = "";
 
@@ -409,10 +401,8 @@
           formPilihan.appendChild(label);
         });
 
-        // Reset penjelasan
         document.getElementById("jawaban-dinamis").innerText = "";
 
-        // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
         const radios = document.getElementsByName("jawaban");
         radios.forEach(radio => {
           radio.addEventListener("change", function() {
@@ -425,7 +415,6 @@
             }
             document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
 
-            // Buka details otomatis
             const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
             if (!details.open) {
               details.open = true;
@@ -439,9 +428,31 @@
         tampilkanSoal();
       }
 
-      // Tampilkan soal pertama saat halaman dimuat
       tampilkanSoal();
+
+      // Scroll behavior for header hide/show
+      let lastScrollTop = 0;
+      const header = document.getElementById('headerContainer');
+
+      window.addEventListener('scroll', () => {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+
+        if (st === 0) {
+          // At very top, show header
+          header.classList.remove('hidden');
+        } else if (st > lastScrollTop) {
+          // Scrolling down - hide header
+          header.classList.add('hidden');
+        } else if (st < lastScrollTop) {
+          // Scrolling up but not at top - keep hidden
+          // Only show when scrollTop = 0
+          // So do nothing here
+        }
+
+        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
+      });
     </script>
+
     <section>
       <div class="badge-img" title="PPT Menarik">
         <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
@@ -474,46 +485,10 @@
     <div class="indent-block">
       <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
       <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
-      <figure>
-        <img src="https://images.pexels.com/photos/414171/pexels-photo-414171.jpeg" alt="Pelangi" style="max-width:100%; border-radius:12px;" />
-        <figcaption>Pelangi yang merupakan lengkungan cahaya warna-warni (Photo by Ben Mack from Pexels)</figcaption>
-      </figure>
-      <figure>
-        <img src="Tendangan bola.jpg" alt="Tendangan Bola" style="max-width:100%; border-radius:12px;" />
-        <figcaption>Gerakan tendangan bola membentuk lintasan parabola (Photo by wikihow.com)</figcaption>
-      </figure>
     </div>
-    
-    <section>
-      <div class="badge-img" title="Video YouTube">
-        <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="Video Badge" />
-      </div>
-      <div class="content">
-        <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
-        <ul>
-          <li><a href="https://youtu.be/IwFQPIdqqqQ?si=PMgGxDA5i-TOPo1r" target="_blank" rel="noopener noreferrer">Funsi Kuadrat Bagian 1 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/IcQAjHTW5z8?si=Fj5gmRLbWTlrerz2" target="_blank" rel="noopener noreferrer">Fungsi kuadrat Bagian 2 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/73eawh1yOyU?si=Q2R1Y-fYAqckdnae" target="_blank" rel="noopener noreferrer">Fungsi Kuadrat Bagian 3 - m4th-lab</a></li>
-        </ul>
-      </div>
-    </section>
   </main>
   <footer>
-    &copy; 2025 10 SMK
+    &copy; 2025 Persamaan Kuadrat | Materi Matematika Interaktif
   </footer>
-  <script>
-    // Menghilangkan header dan toolbar saat scroll ke bawah, muncul lagi saat scroll ke atas
-    const headerContainer = document.getElementById('headerContainer');
-    let lastScrollTop = 0;
-    window.addEventListener('scroll', function() {
-      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-      if (scrollTop > lastScrollTop && scrollTop > 50) {
-        headerContainer.classList.add('hide');
-      } else {
-        headerContainer.classList.remove('hide');
-      }
-      lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
-    });
-  </script>
 </body>
 </html>
