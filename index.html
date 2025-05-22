@@ -50,11 +50,12 @@
     }
     .header-container h1 {
       margin: 0;
-      font-size: 3rem;
+      font-size: 2rem; /* Ukuran judul diperkecil dari 3rem ke 2rem */
       color: #2a64d6;
       text-shadow: 1px 1px 3px #a0c4ff;
       user-select: none;
       padding: 25px 20px 0 20px;
+      transition: font-size 0.3s;
     }
 
     /* Toolbar responsif */
@@ -216,7 +217,7 @@
 
     @media (max-width: 600px) {
       .header-container h1 {
-        font-size: 2.2rem;
+        font-size: 1.7rem; /* juga diperkecil di mobile */
       }
       main {
         padding: 20px;
