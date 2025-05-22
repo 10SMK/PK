@@ -30,71 +30,12 @@
       align-items: center;
     }
 
-    /* Header styling */
-    #headerContainer {
-      width: 100%;
-      max-width: 900px;
-      background: #fff;
-      border-radius: 20px 20px 0 0;
-      box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      position: fixed;
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-      z-index: 1000;
-      transition: transform 0.3s ease, opacity 0.3s ease;
-      user-select: none;
-    }
-    #headerContainer.hidden {
-      transform: translateX(-50%) translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-    #headerContainer h1 {
-      margin: 0;
-      font-size: 2rem;
-      color: #2a64d6;
-      text-shadow: 1px 1px 3px #a0c4ff;
-      padding: 25px 20px 10px 20px;
-      text-align: center;
-    }
-
-    /* Navigation buttons below header */
-    #toolbar {
-      display: flex;
-      justify-content: center;
-      gap: 16px;
-      background: #f4f4f4;
-      border-radius: 0 0 18px 18px;
-      box-shadow: 0 2px 8px rgba(139,195,74,0.08);
-      padding: 12px 0 20px 0;
-      user-select: none;
-    }
-    #toolbar button {
-      background-color: #8bc34a;
-      border: none;
-      padding: 12px 22px;
-      border-radius: 30px;
-      color: white;
-      font-size: 1.1rem;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 5px 15px rgba(139,195,74,0.3);
-      transition: background-color 0.2s;
-      flex: 1 1 auto;
-      max-width: 180px;
-    }
-    #toolbar button:hover {
-      background-color: #7cb342;
-    }
-
     main {
       max-width: 900px;
       background: #fffdf9;
       border-radius: 0 0 20px 20px;
       padding: 30px 40px 40px 40px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      margin-top: 140px; /* space for fixed header + toolbar */
       margin-bottom: 60px;
       width: 100%;
     }
@@ -116,6 +57,7 @@
       width: 48px;
       height: 48px;
       margin-right: 18px;
+      user-select: none;
     }
     .badge-img img {
       width: 100%;
@@ -129,11 +71,21 @@
       flex-grow: 1;
     }
 
+    h1 {
+      margin: 30px 0 0 0;
+      font-size: 2rem;
+      color: #2a64d6;
+      text-shadow: 1px 1px 3px #a0c4ff;
+      user-select: none;
+      text-align: center;
+    }
+
     h2 {
       color: #558b2f;
       margin-top: 0;
       margin-bottom: 15px;
       font-size: 1.9rem;
+      user-select: none;
     }
 
     p, ul, li {
@@ -175,6 +127,7 @@
 
     details summary {
       font-weight: 700;
+      user-select: none;
     }
 
     a {
@@ -212,20 +165,12 @@
       user-select: none;
       font-weight: 600;
     }
-
     @media (max-width: 600px) {
-      #toolbar {
-        flex-direction: column;
-        gap: 10px;
-        padding-bottom: 15px;
-      }
-      #toolbar button {
-        max-width: none;
-        width: 100%;
+      h1 {
+        font-size: 1.7rem;
       }
       main {
         padding: 20px;
-        margin-top: 160px;
       }
       section {
         flex-direction: column;
@@ -252,14 +197,7 @@
   </style>
 </head>
 <body>
-  <div id="headerContainer">
-    <h1>Persamaan Kuadrat</h1>
-    <nav id="toolbar">
-      <button onclick="window.location.href='profile.html'">Lihat Profil</button>
-      <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
-    </nav>
-  </div>
-
+  <h1>Persamaan Kuadrat</h1>
   <main>
     <section>
       <div class="badge-img" title="Pengertian">
@@ -401,8 +339,10 @@
           formPilihan.appendChild(label);
         });
 
+        // Reset penjelasan
         document.getElementById("jawaban-dinamis").innerText = "";
 
+        // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
         const radios = document.getElementsByName("jawaban");
         radios.forEach(radio => {
           radio.addEventListener("change", function() {
@@ -415,6 +355,7 @@
             }
             document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
 
+            // Buka details otomatis
             const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
             if (!details.open) {
               details.open = true;
@@ -428,31 +369,9 @@
         tampilkanSoal();
       }
 
+      // Tampilkan soal pertama saat halaman dimuat
       tampilkanSoal();
-
-      // Scroll behavior for header hide/show
-      let lastScrollTop = 0;
-      const header = document.getElementById('headerContainer');
-
-      window.addEventListener('scroll', () => {
-        const st = window.pageYOffset || document.documentElement.scrollTop;
-
-        if (st === 0) {
-          // At very top, show header
-          header.classList.remove('hidden');
-        } else if (st > lastScrollTop) {
-          // Scrolling down - hide header
-          header.classList.add('hidden');
-        } else if (st < lastScrollTop) {
-          // Scrolling up but not at top - keep hidden
-          // Only show when scrollTop = 0
-          // So do nothing here
-        }
-
-        lastScrollTop = st <= 0 ? 0 : st; // For Mobile or negative scrolling
-      });
     </script>
-
     <section>
       <div class="badge-img" title="PPT Menarik">
         <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
@@ -485,6 +404,7 @@
     <div class="indent-block">
       <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
       <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
+      <!-- Anda bisa menambahkan gambar atau ilustrasi di sini jika ingin -->
     </div>
   </main>
   <footer>
