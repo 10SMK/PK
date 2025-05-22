@@ -30,25 +30,31 @@
       align-items: center;
     }
 
-    header {
+    .header-container {
       width: 100%;
       max-width: 900px;
       background: #fff;
       border-radius: 20px 20px 0 0;
-      padding: 25px 20px 0 20px;
       box-shadow: 0 6px 15px rgba(0,0,0,0.1);
-      text-align: center;
       margin-top: 30px;
       position: sticky;
       top: 0;
       z-index: 20;
+      transition: opacity 0.3s, transform 0.3s;
+      text-align: center;
     }
-    header h1 {
+    .header-container.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-60px);
+    }
+    .header-container h1 {
       margin: 0;
       font-size: 3rem;
       color: #2a64d6;
       text-shadow: 1px 1px 3px #a0c4ff;
       user-select: none;
+      padding: 25px 20px 0 20px;
     }
 
     /* Toolbar responsif */
@@ -62,15 +68,7 @@
       box-shadow: 0 2px 8px rgba(139,195,74,0.08);
       padding: 12px 0;
       margin-top: 18px;
-      position: sticky;
-      top: 88px;
-      z-index: 19;
       transition: opacity 0.3s, transform 0.3s;
-    }
-    .toolbar.hide {
-      opacity: 0;
-      pointer-events: none;
-      transform: translateY(-40px);
     }
     .toolbar button {
       background-color: #8bc34a;
@@ -217,7 +215,7 @@
     }
 
     @media (max-width: 600px) {
-      header h1 {
+      .header-container h1 {
         font-size: 2.2rem;
       }
       main {
@@ -249,15 +247,14 @@
   </style>
 </head>
 <body>
-  <header>
+  <div class="header-container" id="headerContainer">
     <h1>Persamaan Kuadrat</h1>
     <nav class="toolbar" id="toolbar">
       <button onclick="window.location.href='profile.html'">Lihat Profil</button>
       <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
     </nav>
-  </header>
+  </div>
   <main>
-    <!-- Seluruh konten Anda tetap, mulai dari sini -->
     <section>
       <div class="badge-img" title="Pengertian">
         <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
@@ -492,15 +489,15 @@
     &copy; 2025 10 SMK
   </footer>
   <script>
-    // Toolbar dinamis: hilang saat scroll ke bawah, muncul saat scroll ke atas
-    const toolbar = document.getElementById('toolbar');
+    // Menghilangkan header dan toolbar saat scroll ke bawah, muncul lagi saat scroll ke atas
+    const headerContainer = document.getElementById('headerContainer');
     let lastScrollTop = 0;
     window.addEventListener('scroll', function() {
       const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
       if (scrollTop > lastScrollTop && scrollTop > 50) {
-        toolbar.classList.add('hide');
+        headerContainer.classList.add('hide');
       } else {
-        toolbar.classList.remove('hide');
+        headerContainer.classList.remove('hide');
       }
       lastScrollTop = scrollTop <= 0 ? 0 : scrollTop;
     });
