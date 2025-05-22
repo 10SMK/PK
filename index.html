@@ -51,8 +51,20 @@
       user-select: none;
     }
 
-    /* Tombol profil responsif */
-    .btn-profile {
+    /* Container tombol responsif dan dinamis */
+    #buttonHeader {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      margin-top: 10px;
+      transition: opacity 0.3s, transform 0.3s;
+    }
+    #buttonHeader.hide {
+      opacity: 0;
+      pointer-events: none;
+      transform: translateY(-20px);
+    }
+    #buttonHeader button {
       background-color: #8bc34a;
       border: none;
       padding: 12px 22px;
@@ -64,11 +76,8 @@
       box-shadow: 0 5px 15px rgba(139,195,74,0.6);
       transition: background-color 0.3s ease;
       user-select: none;
-      margin-top: 18px;
-      margin-bottom: 5px;
-      display: inline-block;
     }
-    .btn-profile:hover {
+    #buttonHeader button:hover {
       background-color: #7cb342;
     }
 
@@ -90,6 +99,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(139,195,74,0.15);
       position: relative;
+      gap: 18px;
     }
 
     .badge-img {
@@ -220,7 +230,7 @@
       h2 {
         font-size: 1.3rem;
       }
-      button, .btn-profile {
+      button, #buttonHeader button {
         width: 100%;
         padding: 12px 0;
         font-size: 1.1rem;
@@ -231,11 +241,12 @@
 <body>
   <header>
     <h1>Persamaan Kuadrat</h1>
-    <button class="btn-profile" onclick="window.location.href='profile.html'">Lihat Profil</button>
+    <div id="buttonHeader">
+      <button onclick="window.location.href='profile.html'">Lihat Profil</button>
+      <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+    </div>
   </header>
   <main>
-    <!-- ... seluruh isi <main> tetap seperti file Anda ... -->
-    <!-- (Potongan kode main Anda tidak diubah, silakan gunakan seperti pada file Anda) -->
     <section>
       <div class="badge-img" title="Pengertian">
         <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
@@ -253,7 +264,6 @@
         <p>Persamaan kuadrat sering digunakan dalam matematika, fisika, dan teknik, seperti lintasan parabola dan optimasi.</p>
       </div>
     </section>
-
     <div class="indent-block">
       <h2 style="margin-top:0;">Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
       <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
@@ -307,11 +317,10 @@
         </details>
       </div>
     </section>
-    
-    <!-- Latihan Soal Dinamis, mobile-friendly -->
+
     <section>
       <div class="badge-img" title="Latihan Soal Dinamis">
-        <img src="https://img.icons8.com/fluency/48/000000/quiz.png" alt="Latihan Soal Badge" />
+        <img src="https://img.icons8.com/color/48/000000/question-mark.png" alt="Latihan Soal Badge" />
       </div>
       <div class="content">
         <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
@@ -326,96 +335,95 @@
       </div>
     </section>
     <script>
-    const daftarSoal = [
-      {
-        soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
-        pilihan: [
-          "x = 2 dan x = 3",
-          "x = -2 dan x = -3",
-          "x = 1 dan x = 6",
-          "x = -1 dan x = -6"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "Persamaan x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3) = 0, sehingga x = 2 atau x = 3."
-      },
-      {
-        soal: "Akar-akar dari persamaan x² + 4x + 3 = 0 adalah ...",
-        pilihan: [
-          "x = -1 dan x = -3",
-          "x = 1 dan x = 3",
-          "x = -4 dan x = -3",
-          "x = 4 dan x = 3"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
-      },
-      {
-        soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
-        pilihan: [
-          "x = 3 dan x = 4",
-          "x = -3 dan x = -4",
-          "x = 2 dan x = 6",
-          "x = -2 dan x = -6"
-        ],
-        jawabanBenar: 0,
-        penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
-      }
-    ];
+      const daftarSoal = [
+        {
+          soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 2 dan x = 3",
+            "x = -2 dan x = -3",
+            "x = 1 dan x = 6",
+            "x = -1 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Persamaan x² - 5x + 6 = 0 dapat difaktorkan menjadi (x-2)(x-3) = 0, sehingga x = 2 atau x = 3."
+        },
+        {
+          soal: "Akar-akar dari persamaan x² + 4x + 3 = 0 adalah ...",
+          pilihan: [
+            "x = -1 dan x = -3",
+            "x = 1 dan x = 3",
+            "x = -4 dan x = -3",
+            "x = 4 dan x = 3"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "Faktorkan x² + 4x + 3 = (x+1)(x+3) = 0, sehingga x = -1 atau x = -3."
+        },
+        {
+          soal: "Jika x² - 7x + 12 = 0, maka akar-akarnya adalah ...",
+          pilihan: [
+            "x = 3 dan x = 4",
+            "x = -3 dan x = -4",
+            "x = 2 dan x = 6",
+            "x = -2 dan x = -6"
+          ],
+          jawabanBenar: 0,
+          penjelasan: "x² - 7x + 12 = (x-3)(x-4) = 0, sehingga x = 3 atau x = 4."
+        }
+      ];
 
-    let indeksSoal = 0;
+      let indeksSoal = 0;
 
-    function tampilkanSoal() {
-      const soalObj = daftarSoal[indeksSoal];
-      document.getElementById("soal-dinamis").innerText = soalObj.soal;
+      function tampilkanSoal() {
+        const soalObj = daftarSoal[indeksSoal];
+        document.getElementById("soal-dinamis").innerText = soalObj.soal;
 
-      const formPilihan = document.getElementById("pilihan-jawaban");
-      formPilihan.innerHTML = "";
+        const formPilihan = document.getElementById("pilihan-jawaban");
+        formPilihan.innerHTML = "";
 
-      soalObj.pilihan.forEach((pilihan, idx) => {
-        const label = document.createElement("label");
-        label.style.display = "block";
-        label.style.marginBottom = "6px";
-        label.style.cursor = "pointer";
-        label.innerHTML = `
-          <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;" /> ${pilihan}
-        `;
-        formPilihan.appendChild(label);
-      });
-
-      // Reset penjelasan
-      document.getElementById("jawaban-dinamis").innerText = "";
-
-      // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
-      const radios = document.getElementsByName("jawaban");
-      radios.forEach(radio => {
-        radio.addEventListener("change", function() {
-          const jawabanDipilih = parseInt(this.value);
-          let hasil = "";
-          if (jawabanDipilih === soalObj.jawabanBenar) {
-            hasil = "✅ Jawaban Anda benar!";
-          } else {
-            hasil = "❌ Jawaban Anda kurang tepat.";
-          }
-          document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
-
-          // Buka details otomatis
-          const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
-          if (!details.open) {
-            details.open = true;
-          }
+        soalObj.pilihan.forEach((pilihan, idx) => {
+          const label = document.createElement("label");
+          label.style.display = "block";
+          label.style.marginBottom = "6px";
+          label.style.cursor = "pointer";
+          label.innerHTML = `
+            <input type="radio" name="jawaban" value="${idx}" style="margin-right:8px;" /> ${pilihan}
+          `;
+          formPilihan.appendChild(label);
         });
-      });
-    }
 
-    function gantiSoal() {
-      indeksSoal = (indeksSoal + 1) % daftarSoal.length;
+        // Reset penjelasan
+        document.getElementById("jawaban-dinamis").innerText = "";
+
+        // Event listener: tampilkan penjelasan otomatis saat memilih jawaban
+        const radios = document.getElementsByName("jawaban");
+        radios.forEach(radio => {
+          radio.addEventListener("change", function() {
+            const jawabanDipilih = parseInt(this.value);
+            let hasil = "";
+            if (jawabanDipilih === soalObj.jawabanBenar) {
+              hasil = "✅ Jawaban Anda benar!";
+            } else {
+              hasil = "❌ Jawaban Anda kurang tepat.";
+            }
+            document.getElementById("jawaban-dinamis").innerHTML = hasil + "<br><br>" + soalObj.penjelasan;
+
+            // Buka details otomatis
+            const details = document.querySelector("#jawaban-dinamis").parentElement.parentElement;
+            if (!details.open) {
+              details.open = true;
+            }
+          });
+        });
+      }
+
+      function gantiSoal() {
+        indeksSoal = (indeksSoal + 1) % daftarSoal.length;
+        tampilkanSoal();
+      }
+
+      // Tampilkan soal pertama saat halaman dimuat
       tampilkanSoal();
-    }
-
-    // Tampilkan soal pertama saat halaman dimuat
-    tampilkanSoal();
     </script>
-
     <section>
       <div class="badge-img" title="PPT Menarik">
         <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
