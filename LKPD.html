@@ -70,14 +70,57 @@
     padding: 3px 6px;
     border-radius: 4px;
   }
+  .hasil-nilai {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(42,100,214,0.10);
+    padding: 25px 18px 18px 18px;
+    margin-top: 30px;
+    margin-bottom: 30px;
+    max-width: 700px;
+  }
+  .hasil-nilai h2 {
+    color: #2a64d6;
+    margin-top: 0;
+    font-size: 1.3rem;
+  }
+  .hasil-nilai table {
+    border-collapse: collapse;
+    width: 100%;
+    margin-top: 10px;
+  }
+  .hasil-nilai th, .hasil-nilai td {
+    border: 1px solid #b6e2a1;
+    padding: 8px 10px;
+    text-align: left;
+    font-size: 1rem;
+  }
+  .hasil-nilai th {
+    background: #e8f5e9;
+  }
+  .benar {
+    color: #388e3c;
+    font-weight: bold;
+  }
+  .salah {
+    color: #d32f2f;
+    font-weight: bold;
+  }
+  .belum {
+    color: #888;
+    font-weight: bold;
+  }
+  .total-skor {
+    font-size: 1.15rem;
+    font-weight: bold;
+    text-align: right;
+    padding-top: 10px;
+  }
 </style>
-
-<!-- MathJax CDN -->
 <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
 <script id="MathJax-script" async
   src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
 </script>
-
 </head>
 <body>
 
@@ -195,5 +238,45 @@
   <button type="submit">Kirim Jawaban</button>
 </form>
 
+<div id="hasilNilai" class="hasil-nilai" style="display:none"></div>
+
+<script>
+const kunciPG = [
+  "a", // 1. 2 dan 5
+  "b", // 2. 16
+  "b", // 3. Dua akar real sama
+  "a", // 4. 2 dan 2
+  "a", // 5. x^2 + 2x - 3 = 0
+  "a", // 6. 2 dan -1
+  "c", // 7. Dua akar kompleks
+  "a", // 8. (x - 4)(x - 5)
+  "a", // 9. 3 dan 0.5
+  "a"  // 10. -1 + i dan -1 - i
+];
+
+document.getElementById('lkpdForm').onsubmit = function(e) {
+  e.preventDefault();
+  let benar = 0;
+  let hasil = `<h2>Hasil Nilai Anda</h2><table><tr><th>No</th><th>Status</th></tr>`;
+  // Pilihan Ganda
+  for(let i=1;i<=10;i++) {
+    let val = (document.querySelector('input[name="soal'+i+'"]:checked')||{}).value||"";
+    if(val === kunciPG[i-1]) {
+      benar++;
+      hasil += `<tr><td>${i}</td><td class="benar">Benar</td></tr>`;
+    } else {
+      hasil += `<tr><td>${i}</td><td class="salah">Salah</td></tr>`;
+    }
+  }
+  // Esai
+  for(let i=11;i<=15;i++) {
+    hasil += `<tr><td>${i}</td><td class="belum">Belum Dinilai</td></tr>`;
+  }
+  hasil += `</table><div class="total-skor">Skor Pilihan Ganda: ${benar} / 10</div>`;
+  document.getElementById('hasilNilai').innerHTML = hasil;
+  document.getElementById('hasilNilai').style.display = 'block';
+  document.getElementById('lkpdForm').style.display = 'none';
+};
+</script>
 </body>
 </html>
