@@ -30,7 +30,7 @@
       align-items: center;
     }
 
-    /* Header and main navigation */
+    /* Header fixed on top */
     #headerContainer {
       width: 100%;
       max-width: 900px;
@@ -43,6 +43,7 @@
       transform: translateX(-50%);
       z-index: 1000;
       user-select: none;
+      padding-bottom: 5px;
     }
     #headerContainer h1 {
       margin: 0;
@@ -52,31 +53,36 @@
       padding: 25px 20px 10px 20px;
       text-align: center;
     }
-    #toolbar {
+
+    /* Navigation bar container */
+    #navBar {
       display: flex;
-      justify-content: center;
-      gap: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: flex-start;
+      padding: 8px 20px 15px 20px;
       background: #f4f4f4;
       border-radius: 0 0 18px 18px;
       box-shadow: 0 2px 8px rgba(139,195,74,0.08);
-      padding: 12px 0 20px 0;
       user-select: none;
     }
-    #toolbar button {
+
+    /* Style for all nav buttons */
+    #navBar button {
       background-color: #8bc34a;
       border: none;
-      padding: 12px 22px;
+      padding: 10px 18px;
       border-radius: 30px;
       color: white;
-      font-size: 1.1rem;
+      font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
       box-shadow: 0 5px 15px rgba(139,195,74,0.3);
       transition: background-color 0.2s;
-      flex: 1 1 auto;
-      max-width: 180px;
+      white-space: nowrap;
+      user-select: none;
     }
-    #toolbar button:hover {
+    #navBar button:hover {
       background-color: #7cb342;
     }
 
@@ -86,7 +92,7 @@
       border-radius: 0 0 20px 20px;
       padding: 30px 40px 40px 40px;
       box-shadow: 0 8px 25px rgba(0,0,0,0.1);
-      margin-top: 140px; /* space for fixed header + toolbar */
+      margin-top: 130px; /* space for fixed header + navBar */
       margin-bottom: 60px;
       width: 100%;
       position: relative;
@@ -129,33 +135,6 @@
       margin-bottom: 15px;
       font-size: 1.9rem;
       user-select: none;
-      position: relative;
-      cursor: pointer;
-      padding-right: 60px; /* space for nav button */
-    }
-
-    /* Navigation button for each h2 */
-    .h2-nav-button {
-      position: absolute;
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-      background-color: #8bc34a;
-      border: none;
-      border-radius: 20px;
-      color: white;
-      font-weight: 700;
-      font-size: 0.9rem;
-      padding: 6px 12px;
-      cursor: pointer;
-      box-shadow: 0 3px 8px rgba(139,195,74,0.6);
-      user-select: none;
-      opacity: 0.8;
-      transition: opacity 0.3s;
-    }
-    .h2-nav-button:hover {
-      opacity: 1;
-      background-color: #7cb342;
     }
 
     p, ul, li {
@@ -236,14 +215,17 @@
     }
 
     @media (max-width: 600px) {
-      #toolbar {
-        flex-direction: column;
+      #navBar {
+        flex-wrap: wrap;
+        justify-content: center;
         gap: 10px;
-        padding-bottom: 15px;
+        padding: 10px 10px 15px 10px;
       }
-      #toolbar button {
+      #navBar button {
+        flex: 1 1 45%;
         max-width: none;
-        width: 100%;
+        font-size: 1rem;
+        padding: 10px;
       }
       main {
         padding: 20px;
@@ -264,12 +246,6 @@
       }
       h2 {
         font-size: 1.3rem;
-        padding-right: 50px;
-      }
-      .h2-nav-button {
-        font-size: 0.85rem;
-        padding: 5px 10px;
-        right: 0;
       }
       button {
         width: 100%;
@@ -282,9 +258,10 @@
 <body>
   <div id="headerContainer">
     <h1>Persamaan Kuadrat</h1>
-    <nav id="toolbar">
+    <nav id="navBar" aria-label="Navigasi halaman">
       <button onclick="window.location.href='profile.html'">Lihat Profil</button>
       <button onclick="window.location.href='LKPD.html'">Lembar Kerja Peserta Didik</button>
+      <!-- Tombol navigasi untuk setiap h2 akan disisipkan oleh JavaScript -->
     </nav>
   </div>
 
@@ -294,9 +271,7 @@
         <img src="https://img.icons8.com/fluency/48/000000/book.png" alt="Pengertian Badge" />
       </div>
       <div class="content">
-        <h2>Pengertian Persamaan Kuadrat
-          <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-        </h2>
+        <h2 id="pengertian">Pengertian Persamaan Kuadrat</h2>
         <p>Persamaan kuadrat adalah persamaan polinomial dengan variabel berpangkat dua, yang memiliki bentuk umum:</p>
         <p style="text-align:center; font-size:1.4rem; font-weight: 700;">
           $$ ax^2 + bx + c = 0 $$
@@ -309,9 +284,7 @@
       </div>
     </section>
     <div class="indent-block">
-      <h2>Menyusun Persamaan Kuadrat dari Akar-akarnya
-        <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-      </h2>
+      <h2 id="menyusun-akar">Menyusun Persamaan Kuadrat dari Akar-akarnya</h2>
       <p>Misalkan akar-akar dari persamaan kuadrat adalah \( x_1 \) dan \( x_2 \). Untuk mendapatkan persamaan kuadratnya, Sobat bisa mensubstitusi akar-akar tersebut ke persamaan berikut:</p>
       <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
         $$ (x - x_1)(x - x_2) = 0 $$
@@ -325,9 +298,7 @@
       <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
         $$ x^2 - 5x + 6 = 0 $$
       </p>
-      <h2>Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar
-        <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-      </h2>
+      <h2 id="menyusun-jumlah">Menyusun Persamaan Kuadrat dari Jumlah dan Hasil Kali Akar</h2>
       <p>Jika yang diketahui pada soal hanya jumlah dan hasil kali akar-akarnya, Sobat Pintar bisa menggunakan rumus:</p>
       <p style="text-align:center; font-weight:bold; font-size:1.3rem;">
         $$ x^2 - (x_1 + x_2)x + x_1 x_2 = 0 $$
@@ -345,9 +316,7 @@
         <img src="https://img.icons8.com/fluency/48/000000/test-passed.png" alt="Contoh Soal Badge" />
       </div>
       <div class="content">
-        <h2>Contoh Soal Persamaan Kuadrat
-          <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-        </h2>
+        <h2 id="contoh-soal">Contoh Soal Persamaan Kuadrat</h2>
         <p><b>Soal:</b> Tentukan akar-akar dari persamaan kuadrat berikut:</p>
         <p style="text-align:center; font-size:1.3rem;">
           $$ x^2 - 5x + 6 = 0 $$
@@ -370,9 +339,7 @@
         <img src="https://img.icons8.com/color/48/000000/question-mark.png" alt="Latihan Soal Badge" />
       </div>
       <div class="content">
-        <h2>Latihan Soal Persamaan Kuadrat Dinamis
-          <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-        </h2>
+        <h2 id="latihan-soal">Latihan Soal Persamaan Kuadrat Dinamis</h2>
         <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
         <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height:90px; user-select:none; margin-bottom:15px;"></div>
         <form id="pilihan-jawaban" style="margin-top:10px;"></form>
@@ -468,17 +435,22 @@
 
       tampilkanSoal();
 
-      // Tombol navigasi untuk setiap h2
-      document.querySelectorAll('h2').forEach(h2 => {
-        const btn = h2.querySelector('.h2-nav-button');
-        if (btn) {
-          btn.addEventListener('click', () => {
-            // Scroll ke atas (header fixed), lalu tampilkan tombol navigasi utama
-            window.scrollTo({ top: 0, behavior: 'smooth' });
-            // Fokus tombol profile agar pengguna tahu tombol navigasi aktif
-            document.getElementById('toolbar').focus();
-          });
-        }
+      // Buat tombol navigasi untuk setiap h2 di navBar
+      window.addEventListener('DOMContentLoaded', () => {
+        const navBar = document.getElementById('navBar');
+        const h2Elements = document.querySelectorAll('h2[id]');
+        h2Elements.forEach(h2 => {
+          const btn = document.createElement('button');
+          btn.textContent = h2.textContent.length > 30 ? h2.textContent.slice(0, 27) + '...' : h2.textContent;
+          btn.title = `Navigasi ke ${h2.textContent}`;
+          btn.onclick = () => {
+            // Scroll ke judul h2 dengan smooth scroll dan offset untuk header tetap
+            const yOffset = -120; // header + navBar tinggi kira-kira
+            const elementPosition = h2.getBoundingClientRect().top + window.pageYOffset;
+            window.scrollTo({ top: elementPosition + yOffset, behavior: 'smooth' });
+          };
+          navBar.appendChild(btn);
+        });
       });
     </script>
 
@@ -487,9 +459,7 @@
         <img src="https://img.icons8.com/fluency/48/000000/presentation.png" alt="PPT Badge" />
       </div>
       <div class="content">
-        <h2>PPT tentang Persamaan Kuadrat
-          <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-        </h2>
+        <h2 id="ppt">PPT tentang Persamaan Kuadrat</h2>
         <ul>
           <li><a href="https://slideplayer.info/slide/2297226/" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat 1</a></li>
           <li><a href="https://slideplayer.info/slide/2297326/" target="_blank" rel="noopener noreferrer">Persamaan Kuadrat 2</a></li>
@@ -503,9 +473,7 @@
         <img src="https://img.icons8.com/fluency/48/000000/ebook.png" alt="E-Book Badge" />
       </div>
       <div class="content">
-        <h2>E-Book tentang Persamaan Kuadrat
-          <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-        </h2>
+        <h2 id="ebook">E-Book tentang Persamaan Kuadrat</h2>
         <p>
           Anda dapat membaca e-book interaktif pada link berikut:<br>
           <a href="https://read.bookcreator.com/gmMw3KPcHwV3kZRbPssV4YL4pH13/h3QEMQljSSW0JxVl5ql7hw" target="_blank" rel="noopener noreferrer">
@@ -516,9 +484,7 @@
     </section>
 
     <div class="indent-block">
-      <h2>Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari
-        <button class="h2-nav-button" title="Navigasi" aria-label="Navigasi ke Profile dan LKPD">🔗</button>
-      </h2>
+      <h2 id="penerapan">Penerapan Persamaan Kuadrat dalam Kehidupan Sehari-hari</h2>
       <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
     </div>
   </main>
