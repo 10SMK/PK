@@ -205,6 +205,71 @@
       background-color: #7cb342;
     }
 
+    .lkpd-container {
+      background: #e8f5e9;
+      border-radius: 14px;
+      box-shadow: 0 2px 8px rgba(139,195,74,0.18);
+      padding: 28px 22px 22px 22px;
+      margin-bottom: 40px;
+      margin-top: 10px;
+    }
+    .lkpd-soal {
+      font-size: 1.12rem;
+      margin-bottom: 14px;
+      font-weight: 600;
+    }
+    .lkpd-jawaban {
+      margin-bottom: 18px;
+    }
+    .lkpd-jawaban input {
+      padding: 7px 12px;
+      border-radius: 7px;
+      border: 1px solid #b6e2a1;
+      font-size: 1rem;
+      width: 100%;
+      margin-top: 6px;
+    }
+    .lkpd-summary {
+      background: #fff;
+      border-radius: 15px;
+      box-shadow: 0 2px 8px rgba(139,195,74,0.10);
+      padding: 22px 18px;
+      margin-top: 18px;
+    }
+    .lkpd-summary h3 {
+      margin-top: 0;
+      color: #2a64d6;
+      font-size: 1.3rem;
+    }
+    .lkpd-summary table {
+      border-collapse: collapse;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .lkpd-summary th, .lkpd-summary td {
+      border: 1px solid #b6e2a1;
+      padding: 8px 10px;
+      text-align: left;
+      font-size: 1rem;
+    }
+    .lkpd-summary th {
+      background: #e8f5e9;
+    }
+    .lkpd-summary .benar {
+      color: #388e3c;
+      font-weight: bold;
+    }
+    .lkpd-summary .salah {
+      color: #d32f2f;
+      font-weight: bold;
+    }
+    .lkpd-summary .total-skor {
+      font-size: 1.15rem;
+      font-weight: bold;
+      text-align: right;
+      padding-top: 10px;
+    }
+
     footer {
       text-align: center;
       font-size: 1rem;
@@ -328,12 +393,45 @@
         </details>
       </div>
     </section>
+
+    <!-- LKPD Dinamis -->
     <section>
-      <div class="badge-img" title="Latihan Soal">
+      <div class="badge-img" title="LKPD">
+        <img src="https://img.icons8.com/fluency/48/000000/task.png" alt="LKPD Badge" />
+      </div>
+      <div class="content">
+        <h2>LKPD - Lembar Kerja Peserta Didik</h2>
+        <div class="lkpd-container" id="lkpd-container">
+          <form id="lkpd-form">
+            <div class="lkpd-soal">1. Tentukan akar-akar dari persamaan kuadrat berikut: <b>x² - 5x + 6 = 0</b></div>
+            <div class="lkpd-jawaban">
+              <label>Jawaban Anda:</label>
+              <input type="text" name="jawaban1" placeholder="Contoh: 2 dan 3" required autocomplete="off"/>
+            </div>
+            <div class="lkpd-soal">2. Jika jumlah akar-akar suatu persamaan kuadrat adalah 7 dan hasil kalinya 12, tuliskan persamaan kuadratnya!</div>
+            <div class="lkpd-jawaban">
+              <label>Jawaban Anda:</label>
+              <input type="text" name="jawaban2" placeholder="Contoh: x^2 - 7x + 12 = 0" required autocomplete="off"/>
+            </div>
+            <div class="lkpd-soal">3. Faktorkan persamaan kuadrat berikut: <b>x² + 4x + 3 = 0</b></div>
+            <div class="lkpd-jawaban">
+              <label>Jawaban Anda:</label>
+              <input type="text" name="jawaban3" placeholder="Contoh: (x+1)(x+3)=0" required autocomplete="off"/>
+            </div>
+            <button type="button" id="btn-akhiri">Akhiri Pengerjaan</button>
+          </form>
+          <div id="lkpd-summary" class="lkpd-summary" style="display:none"></div>
+        </div>
+      </div>
+    </section>
+    <!-- END LKPD Dinamis -->
+
+    <section>
+      <div class="badge-img" title="Latihan Soal Dinamis">
         <img src="https://img.icons8.com/color/48/000000/question-mark.png" alt="Latihan Soal Badge" />
       </div>
       <div class="content">
-        <h2>Latihan Soal Persamaan Kuadrat</h2>
+        <h2>Latihan Soal Persamaan Kuadrat Dinamis</h2>
         <p>Soal akan berganti setiap kali Anda klik tombol "Soal Lainnya". Pilih jawaban Anda di bawah ini.</p>
         <div id="soal-dinamis" style="background:#f0fff0; padding:20px; border-radius:10px; font-size:1.2rem; min-height:90px; user-select:none; margin-bottom:15px;"></div>
         <form id="pilihan-jawaban" style="margin-top:10px;"></form>
@@ -345,6 +443,7 @@
       </div>
     </section>
     <script>
+      // Soal dinamis
       const daftarSoal = [
         {
           soal: "Jika x² - 5x + 6 = 0, maka akar-akarnya adalah ...",
@@ -432,6 +531,57 @@
 
       // Tampilkan soal pertama saat halaman dimuat
       tampilkanSoal();
+
+      // LKPD Dinamis
+      const lkpdKunci = [
+        { 
+          soal: "Tentukan akar-akar dari persamaan kuadrat berikut: x² - 5x + 6 = 0",
+          kunci: ["2 dan 3", "3 dan 2", "x=2 dan x=3", "x=3 dan x=2", "2, 3", "3, 2"]
+        },
+        { 
+          soal: "Jika jumlah akar-akar suatu persamaan kuadrat adalah 7 dan hasil kalinya 12, tuliskan persamaan kuadratnya!",
+          kunci: ["x^2 - 7x + 12 = 0", "x² - 7x + 12 = 0", "x^2-7x+12=0", "x²-7x+12=0"]
+        },
+        { 
+          soal: "Faktorkan persamaan kuadrat berikut: x² + 4x + 3 = 0",
+          kunci: ["(x+1)(x+3)=0", "(x + 1)(x + 3) = 0", "(x+3)(x+1)=0", "(x + 3)(x + 1) = 0"]
+        }
+      ];
+
+      document.getElementById('btn-akhiri').onclick = function() {
+        const form = document.getElementById('lkpd-form');
+        const summary = document.getElementById('lkpd-summary');
+        let skor = 0;
+        let output = `<h3>Rekap Jawaban Anda</h3><table><tr><th>No</th><th>Soal</th><th>Jawaban Anda</th><th>Skor</th></tr>`;
+        const jawaban1 = form.jawaban1.value.trim().toLowerCase().replace(/\s+/g,'');
+        const jawaban2 = form.jawaban2.value.trim().toLowerCase().replace(/\s+/g,'');
+        const jawaban3 = form.jawaban3.value.trim().toLowerCase().replace(/\s+/g,'');
+        // Cek Kunci
+        let benar1 = lkpdKunci[0].kunci.some(k => jawaban1 === k.replace(/\s+/g,'').toLowerCase());
+        let benar2 = lkpdKunci[1].kunci.some(k => jawaban2 === k.replace(/\s+/g,'').toLowerCase());
+        let benar3 = lkpdKunci[2].kunci.some(k => jawaban3 === k.replace(/\s+/g,'').toLowerCase());
+        if (benar1) skor++;
+        if (benar2) skor++;
+        if (benar3) skor++;
+        output += `<tr><td>1</td><td>${lkpdKunci[0].soal}</td><td>${form.jawaban1.value}</td><td class="${benar1?'benar':'salah'}">${benar1?'Benar':'Salah'}</td></tr>`;
+        output += `<tr><td>2</td><td>${lkpdKunci[1].soal}</td><td>${form.jawaban2.value}</td><td class="${benar2?'benar':'salah'}">${benar2?'Benar':'Salah'}</td></tr>`;
+        output += `<tr><td>3</td><td>${lkpdKunci[2].soal}</td><td>${form.jawaban3.value}</td><td class="${benar3?'benar':'salah'}">${benar3?'Benar':'Salah'}</td></tr>`;
+        output += `</table><div class="total-skor">Total Skor: ${skor} / 3</div>`;
+        summary.innerHTML = output;
+        summary.style.display = 'block';
+        form.style.display = 'none';
+      };
+
+      // Header hide on scroll
+      const header = document.getElementById('headerContainer');
+      window.addEventListener('scroll', function() {
+        const st = window.pageYOffset || document.documentElement.scrollTop;
+        if (st === 0) {
+          header.classList.remove('hide');
+        } else {
+          header.classList.add('hide');
+        }
+      });
     </script>
     <section>
       <div class="badge-img" title="PPT Menarik">
@@ -467,6 +617,7 @@
       <p>Contoh penerapan persamaan kuadrat adalah pada gerak parabola, seperti pelangi dan tendangan bola dalam sepak bola yang membentuk lintasan melengkung.</p>
     </div>
 
+    <!-- Video YouTube Section -->
     <section>
       <div class="badge-img" title="Video YouTube">
         <img src="https://img.icons8.com/fluency/48/000000/youtube-play.png" alt="Video Badge" />
@@ -474,27 +625,23 @@
       <div class="content">
         <h2>Video YouTube Pembahasan Persamaan Kuadrat</h2>
         <ul>
-          <li><a href="https://youtu.be/IwFQPIdqqqQ?si=PMgGxDA5i-TOPo1r" target="_blank" rel="noopener noreferrer">Funsi Kuadrat Bagian 1 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/IcQAjHTW5z8?si=Fj5gmRLbWTlrerz2" target="_blank" rel="noopener noreferrer">Fungsi kuadrat Bagian 2 - m4th-lab</a></li>
-          <li><a href="https://youtu.be/73eawh1yOyU?si=Q2R1Y-fYAqckdnae" target="_blank" rel="noopener noreferrer">Fungsi Kuadrat Bagian 3 - m4th-lab</a></li>
+          <li>
+            <a href="https://youtu.be/IwFQPIdqqqQ?si=PMgGxDA5i-TOPo1r" target="_blank" rel="noopener noreferrer">
+              Fungsi Kuadrat dan Contoh Soal (YouTube)
+            </a>
+          </li>
         </ul>
+        <!-- Embed video langsung jika diinginkan -->
+        <!--
+        <div style="margin-top:15px">
+          <iframe width="360" height="215" src="https://www.youtube.com/embed/IwFQPIdqqqQ" title="Pembahasan Fungsi Kuadrat" frameborder="0" allowfullscreen></iframe>
+        </div>
+        -->
       </div>
     </section>
   </main>
   <footer>
     &copy; 2025 10 SMK Persamaan Kuadrat | Media Pembelajaran Matematika
   </footer>
-  <script>
-    // Hide header+toolbar saat scroll ke bawah, tampilkan hanya jika scroll sampai atas (scrollTop==0)
-    const header = document.getElementById('headerContainer');
-    window.addEventListener('scroll', function() {
-      const st = window.pageYOffset || document.documentElement.scrollTop;
-      if (st === 0) {
-        header.classList.remove('hide');
-      } else {
-        header.classList.add('hide');
-      }
-    });
-  </script>
 </body>
 </html>
