@@ -11,6 +11,33 @@
             margin: 20px;
             color: #333;
         }
+        /* Tombol Home */
+        .home-btn {
+            position: fixed;
+            top: 24px;
+            left: 24px;
+            z-index: 1000;
+            background: #fff;
+            border: none;
+            border-radius: 50%;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+            width: 48px;
+            height: 48px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: box-shadow 0.2s;
+        }
+        .home-btn:hover {
+            box-shadow: 0 6px 16px rgba(42,100,214,0.18);
+            background: #eaf1ff;
+        }
+        .home-btn svg {
+            width: 28px;
+            height: 28px;
+            fill: #2a64d6;
+        }
         h1 {
             text-align: center;
             color: #2a64d6;
@@ -80,10 +107,26 @@
             .dosen-card {
                 width: 90%;
             }
+            .home-btn {
+                top: 10px;
+                left: 10px;
+                width: 40px;
+                height: 40px;
+            }
+            .home-btn svg {
+                width: 22px;
+                height: 22px;
+            }
         }
     </style>
 </head>
 <body>
+    <!-- Tombol Home -->
+    <a href="index.html" class="home-btn" title="Kembali ke Beranda">
+        <svg viewBox="0 0 24 24">
+            <path d="M3 11.5L12 4l9 7.5V20a1 1 0 0 1-1 1h-5a1 1 0 0 1-1-1v-4h-4v4a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V11.5z"/>
+        </svg>
+    </a>
     <h1>Tim Dosen Pengampu</h1>
     <div class="dosen-container">
         <!-- Profil Edy Wihardjo -->
